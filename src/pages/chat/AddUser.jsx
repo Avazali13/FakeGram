@@ -1,4 +1,4 @@
-import { Avatar } from "@chakra-ui/react";
+
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import useSearchUser from "../../hooks/useSearchUser";
@@ -12,7 +12,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { auth, firestore } from "../../firebase/firebase";
+import {  firestore } from "../../firebase/firebase";
 import useAuthStore from "../../store/authStore";
 import toast from "react-hot-toast";
 

@@ -119,19 +119,19 @@ function ProfileLayout() {
                   )}
                 </span>
                 <div className="text-gray-500 leading-4 pt-4 flex gap-5">
-                  <p>
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
                     <span className="font-bold text-black">
                       {userProfile?.posts?.length}{" "}
                     </span>{" "}
                     Posts
                   </p>
-                  <p>
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
                     <span className="font-bold text-black">
                       {userProfile?.followers?.length}{" "}
                     </span>{" "}
                     Followers
                   </p>
-                  <p>
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
                     <span className="font-bold text-black">
                       {userProfile?.following?.length}{" "}
                     </span>{" "}

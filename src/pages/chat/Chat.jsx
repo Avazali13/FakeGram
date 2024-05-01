@@ -132,9 +132,9 @@ const Chat = () => {
         ))}
       </div>
 
-      <div className="p-5 flex items-center justify-between mt-auto">
+      <div className="p-5 flex items-center justify-between mt-auto flex-col gap-6 md:flex-row">
         <input
-          className="flex basis-3/4 bg-red-200 border-none outline-none text-white p-5 rounded-2xl text-[16px]"
+          className="flex basis-3/4 bg-red-200 border-none outline-none text-white p-5 rounded-2xl text-[16px] "
           placeholder={
             isCurrentUserBlocked || isReceiverBlocked
               ? "You Cannot send a message "
@@ -157,12 +157,13 @@ const Chat = () => {
           </div>
         </div>
         <button
+        className="text-md bg-orange-200 py-4 px-8 rounded-md"
           onClick={handleSend}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         >
           Send
         </button>
-        <button onClick={handleBlock}>
+        <button onClick={handleBlock} className="text-md bg-orange-200 py-4 px-8 rounded-md">
           {isCurrentUserBlocked
             ? "You are blocked"
             : isReceiverBlocked
