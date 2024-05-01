@@ -17,7 +17,7 @@ const StyledSidebar = styled.aside`
   gap: 1.2rem;
 `;
 
-function Sidebar() {
+function SideBar() {
   return (
     <StyledSidebar>
       {/* <Logo /> */}
@@ -26,4 +26,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideBar;

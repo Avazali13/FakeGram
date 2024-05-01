@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import SideBar from "./SideBar";
 import Header from "./Header";
 import styled from "styled-components";
 
@@ -47,7 +47,7 @@ function AppLayout() {
     <Header />
     <StyledAppLayout>
       <div className="sticky top-0 z-10 md:relative">
-        <Sidebar />
+        <SideBar />
       </div>
   
       <Main>
