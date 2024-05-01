@@ -59,6 +59,7 @@ function ProfileLayout() {
   // const userName = useAuthStore((state) => state.user);
   const { isLoading, userProfile } = useGetUserProfileByUsername(username);
   const authUser = useAuthStore((state) => state.user);
+  console.log(userProfile);
 
   const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(
     userProfile?.uid

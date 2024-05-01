@@ -16,7 +16,7 @@ height: 4.8rem;
 function Logo() {
   return (
     <StyledLogo>
-      <Img src="/public/Logo.svg" alt="Logo" />
+      <Img src="../../public/Logo.svg" alt="Logo" />
     </StyledLogo>
   );
 }
