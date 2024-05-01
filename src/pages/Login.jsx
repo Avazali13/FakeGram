@@ -23,7 +23,7 @@ function Login() {
       <Heading as="h4">Log in to your account</Heading>
       <LoginForm />
       <Heading as="h2">
-        <NavLink className='flex justify-center' to="/signup">Create new Profile</NavLink>{" "}
+        <NavLink className='flex justify-center ' to="/signup">Create new Profile</NavLink>{" "}
       </Heading>
     </LoginLayout>
   );
