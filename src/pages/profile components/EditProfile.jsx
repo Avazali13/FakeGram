@@ -36,6 +36,7 @@ const EditProfile = ({ isOpen, onClose }) => {
   const { selectedFile, handleImageChange, setSelectedFile } = usePreviewImg();
   const { isUpdating, editProfile } = useEditProfile();
   const handleEditProfile = async () => {
+    console.log(inputs.bio);
     try {
       await editProfile(inputs, selectedFile);
       setSelectedFile(null);

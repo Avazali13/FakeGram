@@ -83,7 +83,7 @@ const CreatePost = () => {
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
 
-        <ModalContent bg={"#374159"} color={'#f9fafb'}  border={"1px solid gray"} borderRadius={12} maxW={"440px"}>
+        <ModalContent bg={"#374159"} color={'#f9fafb'}  border={"1px solid gray"} borderRadius={12} maxW={{base:"270px",md:'440px'}}  >
           <ModalHeader fontSize={14}>Create Post</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6} >

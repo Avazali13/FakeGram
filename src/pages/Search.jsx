@@ -64,21 +64,20 @@ const CreatePost = () => {
 
       <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
         <ModalOverlay />
-        <ModalContent bg={"#374159"}  color={'white'} border={"1px solid gray"} borderRadius={12} maxW={"440px"}>
+        <ModalContent bg={"#374159"}  color={'white'} border={"1px solid gray"} borderRadius={12} maxW={{base:"270px",md:'440px'}}>
           <ModalHeader fontSize={13} color={"white"}>Search User</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form onSubmit={handleSearchUser}>
               <FormControl color={"white"}>
                 <FormLabel fontSize={'15'} >Username</FormLabel>
-                <Input fontSize={'15'} placeholder="Example:avazali13" ref={searchRef} />
+                <Input fontSize={'15'} placeholder="Example:avazali13" ref={searchRef} mb={9} />
               </FormControl>
               <Flex w={"full"} justifyContent={"flex-end"}>
                 <Button
                   type="submit"
                   ml={"auto"}
                   size={"md"}
-                  my={4}
                   isLoading={isLoading}
                 >
                   Search

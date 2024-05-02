@@ -12,6 +12,7 @@ const StyledHeaderMenu = styled.ul`
   display: flex;
   gap: 2rem;
   align-items: center;
+
 `;
 
 function HeaderMenu() {

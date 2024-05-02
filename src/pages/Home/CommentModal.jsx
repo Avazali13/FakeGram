@@ -67,7 +67,9 @@
           bg={"#374159"}
           color={"#e0e7ff"}
           border={"1px solid gray"}
-          maxW={"540px"}
+          // maxW={"540px"}
+          maxW={{base:'300px',md:'540px'}}
+          // maxH={{base:'230px',md:'210px'}}
           // maxH={"450px"}
           borderRadius={12}
           overflow={"scroll"}
@@ -77,7 +79,7 @@
         >
           <ModalHeader>All Comments</ModalHeader>
           <ModalCloseButton size={'xl'} />
-          <ModalBody pb={6 }>
+          <ModalBody >
             <div
               ref={scrollableContainerRef}
               style={{
@@ -96,8 +98,9 @@
                   type="submit"
                   ml={"auto"}
                   size={"md"}
-                  my={4}
+                  my={12}
                   isLoading={isCommenting}
+          
                 >
                   Post
                 </Button>

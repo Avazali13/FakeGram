@@ -64,8 +64,9 @@ const GloabalStyles=createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-grey-500); /* Color of the scrollbar thumb */
+    background-color: var(--color-grey-500); //Color of the scrollbar thumb
     border-radius: 999px; /* Make the scrollbar thumb rounded */
+
   }
 
 

@@ -24,8 +24,7 @@ const useEditProfile = () => {
         await uploadString(storageRef, selectedFile, "data_url");
         URL = await getDownloadURL(ref(storage, `profilePics/${authUser.uid}`));
       }
-    
- 
+   
       const updatedUser = {
         ...authUser,
         fullName: inputs.fullName || authUser.fullName,
@@ -33,7 +32,7 @@ const useEditProfile = () => {
         // username: inputs.username.toLowerCase(),
         // username: inputs.username ? inputs.username.toLowerCase() : null,
         // bio: inputs.bio || authUser.bio,
-        bio: inputs.bio ? inputs.bio : authUser.bio,
+        bio: inputs.bio ? inputs.bio || authUser.bio :'',
         profilePicURL: URL || authUser.profilePicURL,
       };
       await updateDoc(userDocRef, updatedUser);
@@ -45,6 +44,6 @@ const useEditProfile = () => {
       toast.error(error.message);
     }
   };
-  return  {editProfile,isUpdating}
+  return { editProfile, isUpdating };
 };
 export default useEditProfile;

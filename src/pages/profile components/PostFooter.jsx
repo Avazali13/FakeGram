@@ -34,7 +34,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   //^For Input
 
   return (
-    <Box mb={20} marginTop={"auto"} color={"black"} pl={1}>
+    <Box mb={20} marginTop={"auto"} pl={1}>
       <Flex alignItems={"center"} gap={5} w={"full"} pt={0} mb={2} mt={4}>
         <Box cursor={"pointer"} fontSize={18} onClick={handleLikePost}>
           {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
@@ -69,7 +69,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           {post.comments.length > 0 && (
             <Text
               fontSize="xl"
-              color={"gray"}
+              // color={"gray"}
               cursor={"pointer"}
               onClick={onOpen}
             >
@@ -87,12 +87,15 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
         gap={2}
         justifyContent={"space-between"}
         w={"full"}
+ 
+  
       >
         <InputGroup>
           <Input
             mt={3}
             variant={"flushed"}
-            //
+            // color={"#e0e7ff"}
+            color={'white'}
             placeholder={"Add a comment..."}
             fontSize="14px"
             onChange={(e) => setComment(e.target.value)}

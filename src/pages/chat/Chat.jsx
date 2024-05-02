@@ -16,6 +16,7 @@ import { useChatStore } from "../../store/chatStore";
 
 import { timeAgo } from "../../utils/timeAgo";
 import toast from "react-hot-toast";
+import { NavLink } from "react-router-dom";
 
 const Chat = () => {
   const [val, setVal] = useState("");
@@ -102,9 +103,11 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="flex flex-col basis-2/3 border-x-2 h-full ">
+    <div className="flex flex-col basis-2/3 border-x-2 max-h-screen ">
       <div className="flex items-center gap-6 justify-center border-b-2 py-5">
-        <Avatar size={"xl"} src={user?.profilePicURL} />
+       <NavLink to={`/${user?.username}`}>
+       <Avatar size={"xl"} src={user?.profilePicURL}  />
+       </NavLink>
         <div className="flex flex-col gap-1">
           <span className="font-semibold">{user?.username}</span>
           <p>{user?.bio || "No bio yet("}</p>

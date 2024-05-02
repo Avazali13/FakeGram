@@ -35,7 +35,7 @@ export const StyledNavLink = styled(NavLink)`
     gap: 0.5rem;
 
     color: var(--color-grey-600);
-    font-size: 0.5rem;
+    font-size: 1.6rem;
     padding: 0rem 0rem;
     transition: all 0.3s;
     font-weight: 500;
@@ -80,7 +80,7 @@ function MainNav() {
     <nav className=" shadow-sky-300 shadow-md md:shadow-none ">
       <NavList>
         <StyledNavLink to="/dashboard">
-          <HiOutlineHome />
+          <HiOutlineHome size={44} />
           <span className="hidden md:block">Home</span>
         </StyledNavLink>
         <StyledNavLink to="/messages">

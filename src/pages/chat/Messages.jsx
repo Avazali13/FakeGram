@@ -86,7 +86,7 @@ const MessagesContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Adjusted alignment for better mobile view */
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   padding: 20px; /* Added padding for better spacing */
 `;
 
