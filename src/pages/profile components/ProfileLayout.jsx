@@ -59,8 +59,6 @@ function ProfileLayout() {
   // const userName = useAuthStore((state) => state.user);
   const { isLoading, userProfile } = useGetUserProfileByUsername(username);
   const authUser = useAuthStore((state) => state.user);
-  console.log(userProfile);
-
   const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(
     userProfile?.uid
   );
@@ -80,7 +78,7 @@ function ProfileLayout() {
           <div className="relative overflow-hidden rounded-xl bg-slate-50">
             <div className="h-80 overflow-hidden flex justify-center items-center">
               <img
-                src="https://images.unsplash.com/photo-1713257510109-4cbfec05ff1d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src={userProfile?.backgrondPicURL}
                 alt="post-img"
               />
             </div>
@@ -107,15 +105,15 @@ function ProfileLayout() {
                   {visitingOwnProfileAndAuth || (
                     <Button
                       onClick={handleFollowUser}
-                      colorScheme={isFollowing ? 'red' :'blue'} 
+                      colorScheme={isFollowing ? "red" : "blue"}
                       size="lg"
                       variant="solid"
-                      fontWeight={'bold'}
+                      fontWeight={"bold"}
                       fontSize={16}
-                      padding={'20px 25px'}
+                      padding={"20px 25px"}
                       disabled={isUpdating}
                     >
-                      {isFollowing ? <p >Unfollow</p>: <p>Follow </p>}
+                      {isFollowing ? <p>Unfollow</p> : <p>Follow </p>}
                     </Button>
                   )}
                 </span>

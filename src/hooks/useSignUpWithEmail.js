@@ -43,6 +43,7 @@ const useSignUpWithEmail = () => {
           fullName: fullName,
           bio: "",
           profilePicURL: "",
+          backgrondPicURL:'',
           followers: [],
           following: [],
           posts: [],

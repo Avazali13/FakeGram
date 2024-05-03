@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAuthStore from "../store/authStore";
-import { auth, firestore, storage } from "../firebase/firebase";
+import { firestore, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
@@ -12,19 +12,27 @@ const useEditProfile = () => {
   const setAuthUser = useAuthStore((state) => state.setUser);
   const setUserProfile = useUserProfileStore((state) => state.setUserProfile);
 
-  const editProfile = async (inputs, selectedFile) => {
+  const editProfile = async (inputs, selectedFile, selectedFiles) => {
     if (isUpdating && !authUser) return;
     setIsUpdating(true);
 
     const storageRef = ref(storage, `profilePics/${authUser.uid}`);
     const userDocRef = doc(firestore, "users", authUser.uid);
+    const storageRefs = ref(storage, `bgPics/${authUser.uid}`);
+    const userDocRefs = doc(firestore, "users", authUser.uid);
     let URL = "";
+    let URLS = "";
     try {
       if (selectedFile) {
         await uploadString(storageRef, selectedFile, "data_url");
         URL = await getDownloadURL(ref(storage, `profilePics/${authUser.uid}`));
       }
-   
+
+      if (selectedFiles) {
+        await uploadString(storageRefs, selectedFiles, "data_url");
+        URLS = await getDownloadURL(ref(storage, `bgPics/${authUser.uid}`));
+      }
+
       const updatedUser = {
         ...authUser,
         fullName: inputs.fullName || authUser.fullName,
@@ -32,10 +40,12 @@ const useEditProfile = () => {
         // username: inputs.username.toLowerCase(),
         // username: inputs.username ? inputs.username.toLowerCase() : null,
         // bio: inputs.bio || authUser.bio,
-        bio: inputs.bio ? inputs.bio || authUser.bio :'',
+        bio: inputs.bio ? inputs.bio || authUser.bio : "",
         profilePicURL: URL || authUser.profilePicURL,
+        backgrondPicURL: URLS || authUser.backgrondPicURL,
       };
       await updateDoc(userDocRef, updatedUser);
+      await updateDoc(userDocRefs, updatedUser);
       localStorage.setItem("user-info", JSON.stringify(updatedUser));
       setAuthUser(updatedUser);
       setUserProfile(updatedUser);

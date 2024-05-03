@@ -1,13 +1,10 @@
-
 //^Design from GPT
 import {
   Avatar,
   Button,
-  Center,
   Flex,
   FormControl,
   FormLabel,
-  Heading,
   Input,
   Modal,
   ModalBody,
@@ -22,6 +19,7 @@ import useAuthStore from "../../store/authStore";
 import usePreviewImg from "../../hooks/usePreviewImg";
 import useEditProfile from "../../hooks/useEditProfile";
 import toast from "react-hot-toast";
+import usePreviewImgBg from "../../hooks/usePreviewImgBg";
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({
@@ -31,15 +29,20 @@ const EditProfile = ({ isOpen, onClose }) => {
   });
 
   const authUser = useAuthStore((state) => state.user);
- 
+
   const fileRef = useRef(null);
+  const fileRefs = useRef(null);
   const { selectedFile, handleImageChange, setSelectedFile } = usePreviewImg();
+  const { selectedFiles, handleImageChanges, setSelectedFiles } =
+    usePreviewImgBg();
   const { isUpdating, editProfile } = useEditProfile();
   const handleEditProfile = async () => {
-    console.log(inputs.bio);
+  console.log(selectedFile);
+  console.log(selectedFiles);
     try {
-      await editProfile(inputs, selectedFile);
+      await editProfile(inputs, selectedFile, selectedFiles);
       setSelectedFile(null);
+      setSelectedFiles(null);
       onClose();
     } catch (error) {
       toast.error(error.message);
@@ -58,6 +61,16 @@ const EditProfile = ({ isOpen, onClose }) => {
               size="xl"
               src={selectedFile || authUser.profilePicURL}
               mb={4}
+            />
+            <img src={selectedFiles || authUser.backgrondPicURL} alt="bg" />
+            <Button onClick={() => fileRefs.current.click()} mb={4}>
+              Edit bg
+            </Button>
+            <Input
+              type="file"
+              hidden
+              ref={fileRefs}
+              onChange={handleImageChanges}
             />
             <Button onClick={() => fileRef.current.click()} mb={4}>
               Edit Profile Picture
@@ -93,9 +106,7 @@ const EditProfile = ({ isOpen, onClose }) => {
               <Input
                 placeholder="Bio"
                 defaultValue={authUser.bio}
-                onChange={(e) =>
-                  setInputs({ ...inputs, bio: e.target.value })
-                }
+                onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
               />
             </FormControl>
             <Stack direction="row" mt={6} spacing={4}>
