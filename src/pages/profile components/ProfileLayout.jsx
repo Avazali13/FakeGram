@@ -78,7 +78,7 @@ function ProfileLayout() {
           <div className="relative overflow-hidden rounded-xl bg-slate-50">
             <div className="h-80 overflow-hidden flex justify-center items-center">
               <img
-                src={userProfile?.backgrondPicURL}
+                src={userProfile?.backgrondPicURL || '../../bg.jpeg'}
                 alt="post-img"
               />
             </div>
