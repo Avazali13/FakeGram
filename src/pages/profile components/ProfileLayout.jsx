@@ -68,7 +68,8 @@ function ProfileLayout() {
   const userNotFound = !isLoading && !userProfile;
 
   if (userNotFound) return <PageNotFound />;
-
+  const defaultİmg =
+    "https://images.unsplash.com/photo-1617395440873-63f6e7f25139?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
   return (
     <>
       {isLoading ? (
@@ -77,10 +78,7 @@ function ProfileLayout() {
         <Card noPadding={true}>
           <div className="relative overflow-hidden rounded-xl bg-slate-50">
             <div className="h-80 overflow-hidden flex justify-center items-center">
-              <img
-                src={userProfile?.backgrondPicURL || '../../bg.jpeg'}
-                alt="post-img"
-              />
+              <img src={userProfile?.backgrondPicURL || defaultİmg} alt="post-img" />
             </div>
             <div className="absolute top-60 left-4 ">
               <Avatar size="2xl" src={userProfile?.profilePicURL} />
