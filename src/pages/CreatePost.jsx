@@ -187,7 +187,7 @@ function useCreatePost() {
 
       toast.success("post creaATED SUCCESFULLY");
     } catch (error) {
-      toast.error(error.message);
+      toast.error('sal');
     } finally {
       setIsLoading(false);
     }

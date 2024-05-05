@@ -302,7 +302,9 @@ import {
             alt="profile post"
             w={"100%"}
             h={"100%"}
-            objectFit={"cover"}
+            objectFit={'contain'}
+            // objectFit={'scale-down'}
+            bg={'#e5e7eb'}
           />
         </GridItem>
         <Modal
@@ -337,9 +339,9 @@ import {
                   <Image
                     src={post.imageURL}
                     alt="profile post"
-                    w={"100%"}
-                    h={"100%"}
-                    objectFit={"cover"}
+                    // w={"100%"}
+                    // h={"100%"}
+                    // objectFit={"cover"}
                   />
                 </Flex>
                 <Flex
