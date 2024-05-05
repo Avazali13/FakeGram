@@ -2,7 +2,9 @@ import { Avatar } from "@chakra-ui/react";
 import EmojiPicker from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
 import useAuthStore from "../../store/authStore";
-import { EmojiLogo } from "../../assets/Logo";
+// import { EmojiLogo } from "../../assets/Logo";
+import { IoMdSend } from "react-icons/io";
+
 import {
   arrayRemove,
   arrayUnion,
@@ -27,7 +29,10 @@ const Chat = () => {
   const authUser = useAuthStore((state) => state.user);
   const myMessage = "max-w-[350px] flex gap-5 self-end";
   const yourMessage = "max-w-[350px] flex gap-5";
+  const myMess = "#015C4B";
+  const yourMess = "#1F2C33";
   const endRef = useRef(null);
+
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -103,8 +108,8 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="flex flex-col basis-2/3 border-x-2 max-h-screen ">
-      <div className="flex items-center gap-6 justify-center border-b-2 py-5">
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white max-h-[68rem]" >
+      <div className="flex items-center gap-6 justify-center border-b-1 py-5 bg-slate-400">
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />
        </NavLink>
@@ -115,6 +120,8 @@ const Chat = () => {
       </div>
 
       <div className="flex flex-col gap-5 overflow-x-hidden overflow-y-visible">
+
+      
         {chat?.messages?.map((message) => (
           <div
             className={
@@ -128,16 +135,18 @@ const Chat = () => {
               alt="userimg"
             /> */}
             <div className="flex-1 flex flex-col gap-1">
-              <p className="p-5 bg-orange-300 rounded-lg">{message.val}</p>
+            {/* {{ borderColor: isError ? 'red' : 'initial' }} */}
+            {/* message.senderId === authUser.uid ? myMess : yourMess */}
+              <p style={{backgroundColor : message.senderId === authUser.uid ? "#015C4B" : "#1F2C33"}} className={`p-5 rounded-lg`}>{message.val}</p>
               <p>{timeAgo(message.createAt.seconds * 1000)}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="p-5 flex items-center justify-between mt-auto flex-col gap-6 md:flex-row">
+      <div className="p-5 flex items-center justify-between mt-auto flex-col gap-8 md:flex-row bg-slate-400">
         <input
-          className="flex basis-3/4 bg-red-200 border-none outline-none text-white p-5 rounded-2xl text-[16px] "
+          className="flex basis-3/4 border-white focus:outline-none border-2 outline-none bg-slate-400 p-5 rounded-2xl text-[16px] "
           placeholder={
             isCurrentUserBlocked || isReceiverBlocked
               ? "You Cannot send a message "
@@ -150,8 +159,8 @@ const Chat = () => {
         />
 
         <div className="relative">
-          <button onClick={() => setOpen((val) => !val)} className="w-[30px]">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <button onClick={() => setOpen((val) => !val)} className="w-[30px] mt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
               <path d="M7.105 9.553a1 1 0 0 1 1.342-.448l2 1a1 1 0 0 1-.894 1.79l-2-1a1 1 0 0 1-.448-1.342zm8.448-.448-2 1a1 1 0 0 0 .894 1.79l2-1a1 1 0 1 0-.894-1.79zm-.328 5.263a4 4 0 0 1-6.45 0 1 1 0 0 0-1.55 1.264 6 6 0 0 0 9.55 0 1 1 0 1 0-1.55-1.264zM23 2v10a11 11 0 0 1-22 0V2a1 1 0 0 1 1.316-.949l4.229 1.41a10.914 10.914 0 0 1 10.91 0l4.229-1.41A1 1 0 0 1 23 2zm-2 10a9 9 0 1 0-9 9 9.029 9.029 0 0 0 9-9z" />
             </svg>
           </button>
@@ -160,13 +169,13 @@ const Chat = () => {
           </div>
         </div>
         <button
-        className="text-md bg-orange-200 py-4 px-8 rounded-md"
+        className="text-md py-4 px-8 rounded-md"
           onClick={handleSend}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         >
-          Send
+        <p className="text-[3rem]">  <IoMdSend/></p>
         </button>
-        <button onClick={handleBlock} className="text-md bg-orange-200 py-4 px-8 rounded-md">
+        <button onClick={handleBlock} className="text-md py-2 px-8  rounded-md">
           {isCurrentUserBlocked
             ? "You are blocked"
             : isReceiverBlocked

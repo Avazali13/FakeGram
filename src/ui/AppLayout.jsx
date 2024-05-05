@@ -15,7 +15,7 @@ const Main = styled.main`
 
   scrollbar-color: var(--color-brand-500);
   @media only screen and (min-width: 768px) {
-    padding: 4rem 4.8rem 6.4rem;
+    padding: 1rem 4.8rem 6.4rem;
   }
 `;
 

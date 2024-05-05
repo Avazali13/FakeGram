@@ -11,9 +11,11 @@ const LoginLayout = styled.main`
   min-height: 100vh;
   display: grid;
   /* grid-template-columns: 48rem; */
-  align-content: center;
+  align-content: flex-end;
   justify-content: center;
   gap: 3.2rem;
+
+  padding-bottom: 3rem;
   /* background-color: var(--color-grey-50); */
   background: -webkit-linear-gradient(left, #a445b2, #fa4299);
 `;
@@ -21,8 +23,6 @@ const LoginLayout = styled.main`
 function Login() {
   return (
     <LoginLayout>
-      <Logo />
-      <Heading as="h4">Log in to your account</Heading>
       <LoginForm />
       <Heading as="h2">
         {/* <NavLink className='flex justify-center ' to="/signup">Create new Profile</NavLink>{" "} */}

@@ -11,12 +11,23 @@ import useSignUpWithEmail from "../../hooks/useSignUpWithEmail";
 import Form from "../../ui/Form";
 
 const FormContainer = styled.div`
-  max-width: 400px;
+  @media only screen and (min-width: 768px) {
+    padding: 20px;
+
+    min-width: 420px;
+  }
+
+  min-width: 100%;
+
   margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  /* padding: 20px; */
+  border-radius: 2rem;
+
+  /* border: 1px solid #ccc; */
   border-radius: 8px;
-  background-color: #ffffff;
+  /* background-color: #ffffff;
+   */
+  /* background: -webkit-linear-gradient(left, #a445b2, #fa4299); */
 `;
 
 const StyledButton = styled(Button)`
@@ -27,6 +38,32 @@ const StyledButton = styled(Button)`
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
+`;
+
+const Title = styled.div`
+  @media only screen and (min-width: 768px) {
+    font-size: 35px;
+  }
+  font-size: 22px;
+
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+`;
+
+const StyledInput = styled(Input)`
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  &:focus {
+    border-color: #fc83bb;
+  }
 `;
 
 const SignupForm = () => {
@@ -43,34 +80,37 @@ const SignupForm = () => {
     );
   };
 
-
-
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormRow label="Full Name" error={errors?.fullName?.message}>
-          <Input
-
+        <div className="title-text">
+          <Title className="title login">Signup Form</Title>
+        </div>
+        <FormRow error={errors?.fullName?.message}>
+          <StyledInput
             type="text"
             id="fullName"
             disabled={loading}
             {...register("fullName", { required: "This field is required" })}
+            placeholder="Full Name"
           />
         </FormRow>
 
-        <FormRow label="User Name" error={errors?.userName?.message}>
-          <Input
+        <FormRow error={errors?.userName?.message}>
+          <StyledInput
             type="text"
             id="userName"
             disabled={loading}
             {...register("userName", { required: "This field is required" })}
+            placeholder="User Name"
           />
         </FormRow>
 
-        <FormRow label="Email Address" error={errors?.email?.message}>
-          <Input
+        <FormRow error={errors?.email?.message}>
+          <StyledInput
             type="email"
             id="email"
+            placeholder="Email Address"
             disabled={loading}
             {...register("email", {
               required: "This field is required",
@@ -82,9 +122,10 @@ const SignupForm = () => {
           />
         </FormRow>
 
-        <FormRow label="Password (Min 8 characters)" error={errors?.password?.message}>
-          <Input
+        <FormRow error={errors?.password?.message}>
+          <StyledInput
             type="password"
+            placeholder="Password (Min 8 characters)"
             id="password"
             disabled={loading}
             {...register("password", {
@@ -97,8 +138,9 @@ const SignupForm = () => {
           />
         </FormRow>
 
-        <FormRow label="Repeat Password" error={errors?.passwordConfirm?.message}>
-          <Input
+        <FormRow error={errors?.passwordConfirm?.message}>
+          <StyledInput
+            placeholder="Repeat Password"
             type="password"
             id="passwordConfirm"
             disabled={loading}
@@ -110,144 +152,33 @@ const SignupForm = () => {
           />
         </FormRow>
 
-        <StyledButton type="reset" variation="secondary" disabled={loading} onClick={reset}>
+        <StyledLink to="/login">
+          <StyledButton
+            type="reset"
+            variation="secondary"
+            disabled={loading}
+            onClick={reset}
+          >
+            Cancel
+          </StyledButton>
+        </StyledLink>
+        {/* <StyledButton
+          type="reset"
+          variation="secondary"
+          disabled={loading}
+          onClick={reset}
+        >
           <StyledLink to="/login">Cancel</StyledLink>
-        </StyledButton>
+        </StyledButton> */}
         <StyledButton type="submit" disabled={loading}>
           {loading ? "Creating new user..." : "Create new user"}
         </StyledButton>
+        <div className="mt-4">
+          <GoogleAuth>Sign up with Google</GoogleAuth>
+        </div>
       </Form>
-      <GoogleAuth>Sign up with Google</GoogleAuth>
     </FormContainer>
   );
 };
 
 export default SignupForm;
-
-
-
-
-
-
-
-
-
-
-
-
-//^
-// import { useForm } from "react-hook-form";
-// import Button from "../../ui/Button";
-// import Form from "../../ui/Form";
-// import FormRow from "../../ui/FormRow";
-// import Input from "../../ui/Input";
-// import { NavLink } from "react-router-dom";
-// import { useState } from "react";
-// import useSignUpWithEmail from "../../hooks/useSignUpWithEmail";
-// import GoogleAuth from "./GoogleAuth";
-
-
-// // Email regex: /\S+@\S+\.\S+/
-
-// function SignupForm() {
-//   const { register, formState, getValues, handleSubmit, reset } = useForm();
-//   const { errors } = formState;
-
-//   const { loading, error, signup } = useSignUpWithEmail();
-
-//   function onSubmit({fullName,email,password,userName}) {
-//     signup(
-//       { fullName,userName , email, password},
-//       {
-//         onSettled: () => reset(),
-//       }
-//     );
-//     console.log(userName);
-
-//   }
-
-
-//   return (
-//     <Form onSubmit={handleSubmit(onSubmit)}>
-//       <FormRow label="Full name" error={errors?.fullName?.message}>
-//         <Input
-//           type="text"
-//           id="fullName"
-//           disabled={loading}
-//           {...register("fullName", { required: "This field is required" })}
-//         />
-//       </FormRow>
-
-//       <FormRow label="User name" error={errors?.userName?.message}>
-//         <Input
-//           type="text"
-//           id="userName"
-//           disabled={loading}
-//           {...register("userName", { required: "This field is required" })}
-//         />
-//       </FormRow>
-
-//       <FormRow label="Email address" error={errors?.email?.message}>
-//         <Input
-//           type="email"
-//           id="email"
-//           disabled={loading}
-//           {...register("email", {
-//             required: "This field is required",
-//             pattern: {
-//               value: /\S+@\S+\.\S+/,
-//               message: "Please provide a valid email address",
-//             },
-//           })}
-//         />
-//       </FormRow>
-
-//       <FormRow
-//         label="Password (min 8 characters)"
-//         error={errors?.password?.message}
-//       >
-//         <Input
-//           type="password"
-//           id="password"
-//           disabled={loading}
-//           {...register("password", {
-//             required: "This field is required",
-//             minLength: {
-//               value: 8,
-//               message: "Password needs a minimum of 8 characters",
-//             },
-//           })}
-//         />
-//       </FormRow>
-
-//       <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
-//         <Input
-//           type="password"
-//           id="passwordConfirm"
-//           disabled={loading}
-//           {...register("passwordConfirm", {
-//             required: "This field is required",
-//             validate: (value) =>
-//               value === getValues().password || "Passwords need to match",
-//           })}
-//         />
-//       </FormRow>
-
-//       <FormRow>
-//         {/* type is an HTML attribute! */}
-//         <Button
-//           variation="secondary"
-//           type="reset"
-//           disabled={loading}
-//           onClick={reset}
-//         >
-//           <NavLink to="/login">Cancel</NavLink>
-//         </Button>
-//         <Button disabled={loading}>Create new user</Button>
-//       </FormRow>
-//       <GoogleAuth>Sign up</GoogleAuth>
-//     </Form>
-//   );
-// }
-
-// export default SignupForm;

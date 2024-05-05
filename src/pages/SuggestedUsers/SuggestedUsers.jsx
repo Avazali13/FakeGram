@@ -48,7 +48,7 @@ function SuggestedUsers() {
 
   return (
     <div className=" py-8 px-4">
-      <Heading as="h3" className="text-red-400 mb-4">
+      <Heading as="h4" className=" text-slate-600 pb-8">
         Suggested for you
       </Heading>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">

@@ -15,9 +15,16 @@ import CreatePost from "../pages/CreatePost";
 // import CreatePost from "../pages/CreatePost";
 
 const NavList = styled.ul`
+margin-left: 0.2rem;
   display: flex;
-  gap: 0.2rem;
+  /* justify-content: space-between; */
+  /* gap: 2.3rem; */
+  gap: 25px;
+  padding-top: 2rem;
+  /* padding-bottom: 2rem; */
   flex-wrap: wrap;
+
+  background-color: #fff;
   @media only screen and (min-width: 768px) {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -35,8 +42,8 @@ export const StyledNavLink = styled(NavLink)`
     gap: 0.5rem;
 
     color: var(--color-grey-600);
-    font-size: 1.6rem;
-    padding: 0rem 0rem;
+    /* font-size: 3.9rem; */
+    padding: 0rem 1rem;
     transition: all 0.3s;
     font-weight: 500;
 
@@ -80,7 +87,7 @@ function MainNav() {
     <nav className=" shadow-sky-300 shadow-md md:shadow-none ">
       <NavList>
         <StyledNavLink to="/dashboard">
-          <HiOutlineHome size={44} />
+          <HiOutlineHome />
           <span className="hidden md:block">Home</span>
         </StyledNavLink>
         <StyledNavLink to="/messages">
@@ -94,7 +101,7 @@ function MainNav() {
           <CreatePost />
         </StyledNavLink2>
         <StyledNavLink to="suggested">
-          <HiOutlineUsers />
+          <HiOutlineUsers  />
           <span className="hidden md:block">Suggested Users</span>
         </StyledNavLink>{" "}
         {/* <StyledNavLink to="saved">
@@ -120,6 +127,7 @@ export default MainNav;
 
 export const StyledNavLink2 = styled(NavLink)`
   display: flex;
+  /* gap: 2.2rem; */
 
   &:link,
   &:hover,
@@ -130,8 +138,9 @@ export const StyledNavLink2 = styled(NavLink)`
     gap: 0.5rem;
 
     color: var(--color-grey-600);
-    font-size: 0.5rem;
-    padding: 0rem 0rem;
+    padding: 0rem 1rem;
+
+    /* font-size: 0.9rem; */
     transition: all 0.3s;
     font-weight: 500;
     /* background-color: blue ; */

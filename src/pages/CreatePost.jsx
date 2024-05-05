@@ -71,13 +71,13 @@ const CreatePost = () => {
           gap={4}
           _hover={{ bg: "whiteAlpha.400" }}
           borderRadius={6}
-          p={2}
+          // p={2}
           w={{ base: 10, md: "full" }}
           justifyContent={{ base: "center", md: "flex-start" }}
           onClick={onOpen}
         >
           <CreatePostLogo />
-          <Box display={{ base: "none", md: "block" }}>Create</Box>
+          <Box ml={1} color={"#4b5563"} display={{ base: "none", md: "block" }}>Create</Box>
         </Flex>
       </Tooltip>
       <Modal isOpen={isOpen} onClose={onClose} size="xl">

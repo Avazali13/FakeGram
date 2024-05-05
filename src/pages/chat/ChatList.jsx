@@ -17,11 +17,10 @@ const ChatList = () => {
 
   const [addMode, setAddMode] = useState(false);
   const [chats, setChats] = useState([]);
-  const [input,setInput]=useState('')
+  const [input, setInput] = useState("");
 
   const authUser = useAuthStore((state) => state.user);
   const { chatId, changeChat } = useChatStore();
-
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -62,25 +61,28 @@ const ChatList = () => {
       await updateDoc(userChatsRef, {
         chats: userChats,
       });
-      changeChat(chat.chatId,chat.user);
+      changeChat(chat.chatId, chat.user);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
-const filteredChats=chats.filter((chat)=>chat.user.username.toLowerCase().includes(input.toLowerCase()))
+  const filteredChats = chats.filter((chat) =>
+    chat.user.username.toLowerCase().includes(input.toLowerCase())
+  );
   return (
     <div className="flex-1 overflow-y-visible">
       <div className="flex items-center gap-5 p-5 ">
-        <div className=" flex flex-1 bg-blue-200 items-center gap-5 rounded-md">
-          <CiSearch cursor={"pointer"} />
+        <div className="flex flex-1 items-center gap-5 rounded-md bg-gray-100 px-3 py-2">
+          <CiSearch className="text-gray-500 cursor-pointer" />
           <input
-            className="bg-transparent border-none outline-none flex-1 text-orange-500"
+            className="bg-transparent border-none outline-none flex-1 placeholder-gray-500 focus:outline-none"
             type="text"
-            placeholder="search"
-            onChange={(e)=>setInput(e.target.value)}
+            placeholder="Search..."
+            onChange={(e) => setInput(e.target.value)}
           />
         </div>
+
         <span
           onClick={() => setAddMode((prev) => !prev)}
           className="cursor-pointer text-5xl"
@@ -97,10 +99,25 @@ const filteredChats=chats.filter((chat)=>chat.user.username.toLowerCase().includ
             backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
           }}
         >
-          <Avatar size={"xl"} src={chat.user.blocked.includes(authUser.uid) ? 'null' : chat.user.profilePicURL} />
+          <Avatar
+            size={"xl"}
+            src={
+              chat.user.blocked.includes(authUser.uid)
+                ? "null"
+                : chat.user.profilePicURL
+            }
+          />
           <div className={text}>
-            <span className="font-semibold">{chat.user.blocked.includes(authUser.uid) ? 'User' :chat.user.username}</span>
-            <p>{chat.user.blocked.includes(authUser.uid) ? 'User' : chat.lastMessage}</p>
+            <span className="font-semibold">
+              {chat.user.blocked.includes(authUser.uid)
+                ? "User"
+                : chat.user.username}
+            </span>
+            <p>
+              {chat.user.blocked.includes(authUser.uid)
+                ? "User"
+                : chat.lastMessage}
+            </p>
           </div>
         </div>
       ))}

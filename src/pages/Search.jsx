@@ -58,29 +58,31 @@ const CreatePost = () => {
           <TiUserAdd />
           {/* <p className="ml-4 none">Search</p> */}
           {/* <Box>Search</Box> */}
-          <Box ml={4} display={{ base: "none", md: "block" }}>Search</Box>
+          <Box color={"#4b5563"} ml={5} display={{ base: "none", md: "block" }}>Search</Box>
         </Flex>
       </Tooltip>
 
       <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
         <ModalOverlay />
-        <ModalContent bg={"#374159"}  color={'white'} border={"1px solid gray"} borderRadius={12} maxW={{base:"270px",md:'440px'}}>
-          <ModalHeader fontSize={13} color={"white"}>Search User</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent bg="#F3F4F6"  color="#1F2937" border={"1px solid gray"} borderRadius={12} maxW={{base:"270px",md:'440px'}}>
+          <ModalHeader fontSize={18} >Search User</ModalHeader>
+          <ModalCloseButton color={'#4B5563'} size={'xl'} />
           <ModalBody pb={6}>
             <form onSubmit={handleSearchUser}>
-              <FormControl color={"white"}>
-                <FormLabel fontSize={'15'} >Username</FormLabel>
-                <Input fontSize={'15'} placeholder="Example:avazali13" ref={searchRef} mb={9} />
+              <FormControl  >
+                <FormLabel fontSize={'16'} >Username</FormLabel>
+                <Input padding={8} border={'1px solid #fc83bb'} fontSize={'16'} placeholder="Example:avazali13" ref={searchRef} mb={9} />
               </FormControl>
-              <Flex w={"full"} justifyContent={"flex-end"}>
+              <Flex w={"full"} mt={4} justifyContent={"flex-end"}>
                 <Button
                   type="submit"
                   ml={"auto"}
                   size={"md"}
+                
                   isLoading={isLoading}
+                  colorScheme="blue"
                 >
-                  Search
+                <p className="text-[1.4rem]">  Search</p>
                 </Button>
               </Flex>
             </form>
@@ -94,27 +96,3 @@ const CreatePost = () => {
 
 export default CreatePost;
 
-// 2-COPY AND PASTE FOR THE MODAL
-
-/* <Modal isOpen={isOpen} onClose={onClose} size='xl'>
-				<ModalOverlay />
-
-				<ModalContent bg={"black"} border={"1px solid gray"}>
-					<ModalHeader>Create Post</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody pb={6}>
-						<Textarea placeholder='Post caption...' />
-
-						<Input type='file' hidden />
-
-						<BsFillImageFill
-							style={{ marginTop: "15px", marginLeft: "5px", cursor: "pointer" }}
-							size={16}
-						/>
-					</ModalBody>
-
-					<ModalFooter>
-						<Button mr={3}>Post</Button>
-					</ModalFooter>
-				</ModalContent>
-			</Modal> */

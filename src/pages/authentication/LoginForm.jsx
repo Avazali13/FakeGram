@@ -5,10 +5,8 @@
 // import FormRowVertical from "../../ui/FormRowVertical";
 // import SpinnerMini from "../../ui/SpinnerMini";
 
-
 // import GoogleAuth from "./GoogleAuth";
 // import useLogin from "../../hooks/useLogin";
-
 
 // function LoginForm() {
 //   const [isLogin, setIsLogin] = useState(true);
@@ -71,7 +69,6 @@
 
 // export default LoginForm;
 
-
 //^
 // import { useState } from "react";
 // import styled from "styled-components";
@@ -82,7 +79,6 @@
 // import SpinnerMini from "../../ui/SpinnerMini";
 // import GoogleAuth from "./GoogleAuth";
 // import useLogin from "../../hooks/useLogin";
-
 
 // const LoginFormContainer = styled.div`
 //   max-width: 400px;
@@ -153,7 +149,6 @@
 
 // export default LoginForm;
 
-
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../../ui/Button";
@@ -167,11 +162,13 @@ import { NavLink } from "react-router-dom";
 
 // Styled components for the login form
 const LoginFormContainer = styled.div`
-  max-width: 390px;
+  min-width: 390px;
   background: #fff;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  min-height: 500px;
+  padding: 20px;
+  padding-top: 6rem;
+  border-radius: 2rem;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
   margin: auto;
 `;
 
@@ -182,6 +179,13 @@ const StyledButton = styled(Button)`
   position: relative;
   overflow: hidden;
   margin-top: 20px;
+  background: -webkit-linear-gradient(
+    right,
+    #a445b2,
+    #fa4299,
+    #a445b2,
+    #fa4299
+  );
 `;
 
 // Apply the CSS styling to your form elements
@@ -198,8 +202,14 @@ const StyledInput = styled(Input)`
   &:focus {
     border-color: #fc83bb;
   }
-`;
+  `;
 
+  const Title = styled.div`
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  `;
 const LoginForm = () => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -217,33 +227,40 @@ const LoginForm = () => {
     });
   };
 
+
   return (
     <LoginFormContainer>
       <div className="wrapper">
         <div className="title-text">
-          <div className="title login">Login Form</div>
+          <Title className="title login">Login Form</Title>
         </div>
         <Form onSubmit={handleSubmit} className="form-container">
           <div className="form-inner">
-            <FormRowVertical label="Email Address">
+            <FormRowVertical>
               <StyledInput
+                placeholder="Email Address"
                 type="email"
                 id="email"
                 autoComplete="username"
                 value={inputs.email}
-                onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+                onChange={(e) =>
+                  setInputs({ ...inputs, email: e.target.value })
+                }
                 disabled={loading}
                 required
               />
             </FormRowVertical>
 
-            <FormRowVertical label="Password">
+            <FormRowVertical>
               <StyledInput
+                placeholder="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
                 value={inputs.password}
-                onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+                onChange={(e) =>
+                  setInputs({ ...inputs, password: e.target.value })
+                }
                 disabled={loading}
                 required
               />
@@ -252,7 +269,16 @@ const LoginForm = () => {
             <StyledButton size="large" type="submit" disabled={loading}>
               {!loading ? "Log in" : <SpinnerMini />}
             </StyledButton>
-            <div className="signup-link pt-4">Not a member? <NavLink to='/signup'>Signup now</NavLink></div>
+            <div className="signup-link flex mt-7 justify-center text-[1.6rem]">
+              <p className="ml-3"> Not a member?</p>
+              <p className="ml-4">
+                {" "}
+                <NavLink style={{ color: "#fa4299" }} to="/signup">
+                  {" "}
+                  Signup now
+                </NavLink>
+              </p>
+            </div>
           </div>
         </Form>
         <GoogleAuth>Sign in with Google</GoogleAuth>
@@ -263,4 +289,4 @@ const LoginForm = () => {
 
 export default LoginForm;
 
-<NavLink>Signup now</NavLink>
+<NavLink>Signup now</NavLink>;

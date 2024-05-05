@@ -2,9 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 ::-webkit-scrollbar{
     width: 1px;
@@ -20,3 +24,12 @@
 ::-webkit-scrollbar-thumb:hover{
     background: #555;
 }
+
+*{
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .chat-container {
+    background-image: url('https://wallpapers.com/images/high/whatsapp-chat-background-fb34cc4b2hg9lmix.webp');
+    /* background-color: red; */
+  }
