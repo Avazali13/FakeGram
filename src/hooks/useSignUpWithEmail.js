@@ -11,7 +11,8 @@ import { reload } from "firebase/auth";
 const useSignUpWithEmail = () => {
   const navigate = useNavigate();
   const [createUserWithEmailAndPassword, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  useCreateUserWithEmailAndPassword(auth);
+
   const loginUser = useAuthStore((state) => state.login);
   const signup = async ({ password, email, fullName, userName }) => {
     if (!email || !password || !userName || !fullName) {
