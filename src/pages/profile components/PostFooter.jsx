@@ -19,7 +19,7 @@ import useLikePost from "../../hooks/useLikePost.js";
 import { timeAgo } from "../../utils/timeAgo.js";
 import CommentModal from "../Home/CommentModal.jsx";
 
-const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
+const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
   const { isCommenting, handlePostComment } = usePostsComment();
   const [comment, setComment] = useState("");
   const commentRef = useRef(null);
@@ -35,9 +35,9 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
 
   return (
     <Box mb={20} marginTop={"auto"} pl={1}>
-      <Flex alignItems={"center"} gap={5} w={"full"} pt={0} mb={2} mt={4}>
-        <Box cursor={"pointer"} fontSize={18} onClick={handleLikePost}>
-          {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
+      <Flex alignItems={"center"} gap={5} w={"full"} pt={0} mb={2} mt={4} >
+        <Box cursor={"pointer"} fontSize={18} onClick={handleLikePost} >
+          {!isLiked ? <NotificationsLogo fill={fill} /> : <UnlikeLogo  />}
         </Box>
 
         <Box
@@ -45,10 +45,10 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           fontSize={18}
           onClick={() => commentRef.current.focus()}
         >
-          <CommentLogo />
+          <CommentLogo fill={fill} />
         </Box>
       </Flex>
-      <Text fontWeight={600} fontSize={"xl"} mb={2}>
+      <Text fontWeight={600} fontSize={"xl"} mb={2} color={'white'}>
         {likes} likes
       </Text>
 

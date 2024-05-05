@@ -26,14 +26,12 @@
 
 // export default Messages;
 
-
 //^main
 // import styled from "styled-components";
 // import List from "./List";
 // import Chat from "./Chat";
 // import useAuthStore from "../../store/authStore";
 // import { useChatStore } from "../../store/chatStore";
-
 
 // const MessagesContainer = styled.div`
 //   display: flex;
@@ -74,8 +72,6 @@
 
 // export default Messages;
 
-
-
 import styled from "styled-components";
 import List from "./List";
 import Chat from "./Chat";
@@ -88,15 +84,16 @@ const MessagesContainer = styled.div`
   align-items: flex-start; /* Adjusted alignment for better mobile view */
   /* background-color: #f0f0f0; */
   padding: 20px; /* Added padding for better spacing */
+  /* overflow: hidden; */
 `;
 
 const MessagesWrapper = styled.div`
   display: flex;
   /* flex-direction: column; */
   @media only screen and (max-width: 480px) {
-flex-direction: column;
-gap: 5rem;
-}
+    flex-direction: column;
+    gap: 5rem;
+  }
   width: 100%; /* Adjusted width to fit full screen */
   max-width: 1200px;
 `;

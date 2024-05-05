@@ -146,13 +146,13 @@ export const MessagesLogo = () => (
   </svg>
 );
 
-export const NotificationsLogo = () => (
+export const NotificationsLogo = ({fill}) => (
   <svg
     aria-label="Notifications"
-    // color='rgb(245, 245, 245)'
-    color="rgba(0, 0, 0, 0.12)"
-    // fill='rgb(245, 245, 245)'
-    fill="rgba(0, 0, 0, 0.12);"
+    color='rgb(245, 245, 245)'
+    // color="rgba(0, 0, 0, 0.12)"
+    fill={fill}
+    // fill="rgba(0, 0, 0, 0.12);"
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -166,6 +166,7 @@ export const UnlikeLogo = () => (
   <svg
     aria-label="Unlike"
     color="rgb(255, 48, 64)"
+    // fill={fill}
     fill="rgb(255, 48, 64)"
     height="24"
     role="img"
@@ -220,13 +221,14 @@ export const CreatePostLogo = () => (
   </svg>
 );
 
-export const CommentLogo = () => (
+export const CommentLogo = ({fill}) => (
   <svg
     aria-label="Comment"
-    color="rgba(0, 0, 0, 0.12)"
-    // color='rgb(245, 245, 245)'
+    // color="rgba(0, 0, 0, 0.12)"
+    color='rgb(245, 245, 245)'
     // fill='rgb(245, 245, 245)'
-    fill="rgba(0, 0, 0, 0.12)"
+    fill={fill}
+    // fill="rgba(0, 0, 0, 0.12)"
     height="24"
     role="img"
     viewBox="0 0 24 24"

@@ -101,10 +101,10 @@ function ProfileLayout() {
                     <Button
                       onClick={onOpen}
                       colorScheme="blue"
-                      size="lg"
+                      size="md"
                       variant="solid"
                     >
-                      Edit
+                    <p className="text-[1.8rem]"> Edit </p>
                     </Button>
                   )}
                   {visitingOwnProfileAndAuth || (
@@ -123,21 +123,21 @@ function ProfileLayout() {
                   )}
                 </span>
                 <div className="text-gray-500  leading-4 pt-4 flex gap-5">
-                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.posts?.length}{" "}
                     </span>{" "}
                     <p className="pl-2">Posts</p>
   
                   </p>
-                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.followers?.length}{" "}
                     </span>{" "}
                     <p className="pl-2"> Followers</p>
             
                   </p>
-                  <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
+                  <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.following?.length}{" "}
                     </span>{" "}

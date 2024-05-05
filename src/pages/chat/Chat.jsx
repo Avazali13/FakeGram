@@ -108,7 +108,7 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem]" >
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] " >
       <div className="flex items-center gap-6 justify-center border-b-1 py-5 bg-slate-400">
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />
