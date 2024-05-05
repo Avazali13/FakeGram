@@ -37,8 +37,8 @@ const EditProfile = ({ isOpen, onClose }) => {
     usePreviewImgBg();
   const { isUpdating, editProfile } = useEditProfile();
   const handleEditProfile = async () => {
-  console.log(selectedFile);
-  console.log(selectedFiles);
+    console.log(selectedFile);
+    console.log(selectedFiles);
     try {
       await editProfile(inputs, selectedFile, selectedFiles);
       setSelectedFile(null);
@@ -52,17 +52,19 @@ const EditProfile = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} colorScheme="blue">
       <ModalOverlay />
-      <ModalContent bg="white" borderRadius="xl">
+      <ModalContent position={"absolute"} top={0} bg="white" borderRadius="xl" minW={{base:'10rem',md:'43rem'}}>
         <ModalHeader>Edit Profile</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Flex direction="column" align="center" p={6}>
             <Avatar
-              size="xl"
+              size={{base:'xl',md:'2xl'}}
               src={selectedFile || authUser.profilePicURL}
               mb={4}
             />
+
             <img src={selectedFiles || authUser.backgrondPicURL} alt="bg" />
+
             <Button onClick={() => fileRefs.current.click()} mb={4}>
               Edit bg
             </Button>
@@ -82,9 +84,11 @@ const EditProfile = ({ isOpen, onClose }) => {
               onChange={handleImageChange}
             />
             <FormControl mt={4}>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel fontSize={{base:10,md:14}} >Full Name</FormLabel>
               <Input
                 placeholder="Full Name"
+              fontSize={{base:10,md:13}}
+              height={{base:'3rem',md:'4rem'}}
                 defaultValue={authUser.fullName}
                 onChange={(e) =>
                   setInputs({ ...inputs, fullName: e.target.value })
@@ -92,20 +96,24 @@ const EditProfile = ({ isOpen, onClose }) => {
               />
             </FormControl>
             <FormControl mt={4}>
-              <FormLabel>Username</FormLabel>
+              <FormLabel fontSize={{base:10,md:14}} >Username</FormLabel>
               <Input
                 placeholder="Username"
                 defaultValue={authUser.username}
+                fontSize={{base:10,md:13}}
+                height={{base:'3rem',md:'4rem'}}
                 onChange={(e) =>
                   setInputs({ ...inputs, username: e.target.value })
                 }
               />
             </FormControl>
             <FormControl mt={4}>
-              <FormLabel>Bio</FormLabel>
+              <FormLabel fontSize={{base:10,md:14}} >Bio</FormLabel>
               <Input
                 placeholder="Bio"
+                fontSize={{base:10,md:13}}
                 defaultValue={authUser.bio}
+                height={{base:'3rem',md:'4rem'}}
                 onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
               />
             </FormControl>
@@ -114,15 +122,16 @@ const EditProfile = ({ isOpen, onClose }) => {
                 colorScheme="red"
                 onClick={onClose}
                 isLoading={isUpdating}
+                size={'md'}
               >
-                Cancel
+                <p className=" text-[1.4rem]">Cancel</p>
               </Button>
               <Button
                 colorScheme="blue"
                 onClick={handleEditProfile}
                 isLoading={isUpdating}
               >
-                Submit
+                <p className=" text-[1.4rem]">Submit</p>
               </Button>
             </Stack>
           </Flex>

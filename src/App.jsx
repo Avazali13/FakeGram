@@ -17,8 +17,6 @@ import Signup from "./pages/Signup";
 import Account from "./pages/Account";
 import ProfileLayout from "./pages/profile components/ProfileLayout";
 import Posts from "./pages/profile components/ProfilePosts";
-import Photos from "./pages/profile components/Photos";
-import Friends from "./pages/profile components/Friends";
 import Saved from "./pages/Saved";
 import SuggestedUsers from "./pages/SuggestedUsers/SuggestedUsers";
 import ProtectedRoute from "./ui/ProtectedRoute";

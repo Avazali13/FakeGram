@@ -108,7 +108,7 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white max-h-[68rem]" >
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem]" >
       <div className="flex items-center gap-6 justify-center border-b-1 py-5 bg-slate-400">
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />
@@ -144,7 +144,7 @@ const Chat = () => {
         ))}
       </div>
 
-      <div className="p-5 flex items-center justify-between mt-auto flex-col gap-8 md:flex-row bg-slate-400">
+      <div className="p-5 flex items-center justify-between mt-auto  gap-8 md:flex-row bg-slate-400">
         <input
           className="flex basis-3/4 border-white focus:outline-none border-2 outline-none bg-slate-400 p-5 rounded-2xl text-[16px] "
           placeholder={

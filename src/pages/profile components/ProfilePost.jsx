@@ -27,6 +27,7 @@ import { deleteObject, ref } from "firebase/storage";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { firestore, storage } from "../../firebase/firebase";
 import usePostStore from "../../store/postStore";
+import { comment } from "postcss";
 import Caption from "./Caption";
 
 function ProfilePost({ post }) {
@@ -38,7 +39,7 @@ function ProfilePost({ post }) {
   const decrementPost = useUserProfileStore((state) => state.deletePost);
 
   const handleDeletePost = async () => {
-    if (!window.confirm("Are you sure?")) return;
+    if (!window.confirm("are you sure?")) return;
     if (isDeleting) return;
     try {
       const imageRef = ref(storage, `posts/${post.id}`);
@@ -52,7 +53,7 @@ function ProfilePost({ post }) {
 
       deletePost(post?.id);
       decrementPost(post?.id);
-      toast.success("Post deleted successfully");
+      toast.success("post deleted succesfully");
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -112,91 +113,76 @@ function ProfilePost({ post }) {
         isOpen={isOpen}
         onClose={onClose}
         isCentered={true}
-        size={{ base: "90vw", md: "6xl" }}
+        size={{ base: "3xl", md: "6xl" }}
       >
         <ModalOverlay />
-        <ModalContent
-        >
-          <ModalCloseButton
-            color={"white"}
-            size={"md"}
-            position={"absolute"}
-            zIndex={10}
-            bg={"teal"}
-          />
-          <ModalBody bg={"#374159"} pb={5}>
-         
+        <ModalContent>
+          <ModalCloseButton color={"white"} size={"4"} />
+          <ModalBody bg={"black"} pb={5}>
             <Flex
-              maxH={"80vh"}
+              maxH={"90vh"}
               minH={"50vh"}
               gap="4"
-              w={"full"}
+              w={{ base: "90%", sm: "70%", md: "full" }}
               mx={"auto"}
-              flexDir={{ base: "column", md: "row" }}
             >
               <Flex
                 borderRadius={4}
                 overflow={"hidden"}
                 border={"1px solid"}
                 borderColor={"whiteAlpha.300"}
-                flex={1}
+                flex={1.5}
                 justifyContent={"center"}
                 alignItems={"center"}
-                margin={"auto"}
-                maxW={{ sm: "80vw", md: "100vw" }}
-               
               >
-                <Image src={post.imageURL} alt="profile post" />
+                <Image src={post.imageURL} alt="ptofile post" />
               </Flex>
-              <VStack
+              <Flex
                 flex={1}
                 flexDir={"column"}
                 px={10}
-                py={4}
-                justifyContent={"start"}
-                alignItems={"start"}
-                color={"white"}
+                display={{ base: "none", md: "flex" }}
               >
-                <Flex alignItems={"center"} gap={4}>
-                  <Avatar
-                    src={userProfile.profilePicURL}
-                    size={"sm"}
-                    name="coder13"
-                  />
-                  <Text fontWeight={"bold"} fontSize={14}>
-                    {userProfile?.username}
-                  </Text>
+                <Flex alignItems={"center"} justifyContent={"space-between"}>
+                  <Flex alignItems={"center"} gap={4}>
+                    <Avatar
+                      src={userProfile.profilePicURL}
+                      size={"sm"}
+                      name="As a programmer"
+                    />
+                    <Text color={"white"} fontWeight={"bold"} fontSize={12}>
+                      {userProfile?.username}
+                    </Text>
+                  </Flex>
+                  {authUser?.uid === userProfile?.uid && (
+                    <Button
+                      szie={"sm"}
+                      bg={"transparent"}
+                      _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+                      borderRadius={4}
+                      p={1}
+                      onClick={handleDeletePost}
+                      isLoading={isDeleting}
+                    >
+                      <MdDelete color="white" size={20} cursor={"pointer"} />
+                    </Button>
+                  )}
                 </Flex>
-                <Divider my={4} bg={"gray.500"} w={"full"} />
-                <Caption post={post} />
+                <Divider my={4} bg={"gray.500"} />
                 <VStack
                   w="full"
                   alignItems={"start"}
-                  maxH={"250px"}
+                  maxH={"350px"}
                   overflowY={"auto"}
-                  mt={4}
-                  color={"white"}
                 >
+                  {post.caption && <Caption post={post} />}
                   {post.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
+                    <Comment key={comment?.id *8} comment={comment} />
                   ))}
                 </VStack>
-                <Divider my={4} bg={"gray.800"} w={"full"} />
+                <Divider my={4} bg={"gray.8000"} />
                 <PostFooter post={post} isProfilePage={true} />
-                {authUser?.uid === userProfile?.uid && (
-                  <Button
-                    bg={"transparent"}
-                    colorScheme={"red"}
-                    borderRadius={4}
-                    p={1}
-                    mt={4}
-                    onClick={handleDeletePost}
-                    isLoading={isDeleting}
-                  >
-                    <MdDelete size={20} />
-                  </Button>
-                )}
-              </VStack>
+              </Flex>
             </Flex>
           </ModalBody>
         </ModalContent>

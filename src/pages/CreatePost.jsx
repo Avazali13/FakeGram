@@ -91,8 +91,9 @@ const CreatePost = () => {
               placeholder="Post caption..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
-              minHeight={'130px'}
+              minHeight={{base:'70px',md:'130px'}}
               fontSize={13}
+       
             />
 
             <Input
@@ -132,7 +133,7 @@ const CreatePost = () => {
           </ModalBody>
 
           <ModalFooter >
-            <Button onClick={handlePostCreation} isLoading={isLoading} mr={3} fontSize={14}>
+            <Button onClick={handlePostCreation} isLoading={isLoading} mr={3} fontSize={14} colorScheme="blue">
               Post
             </Button>
           </ModalFooter>

@@ -77,23 +77,30 @@ function ProfileLayout() {
       ) : (
         <Card noPadding={true}>
           <div className="relative overflow-hidden rounded-xl bg-slate-50">
-            <div className="h-80 overflow-hidden flex justify-center items-center">
-              <img src={userProfile?.backgrondPicURL || defaultİmg} alt="post-img" />
+            <div className="h-60 md:h-[34rem]  object-contain overflow-hidden flex justify-center items-center">
+              <img
+              
+                src={userProfile?.backgrondPicURL || defaultİmg}
+                alt="post-img"
+              />
             </div>
-            <div className="absolute top-60 left-4 ">
-              <Avatar size="2xl" src={userProfile?.profilePicURL} />
+            <div className="absolute bottom-[21rem] left-8 md:bottom-[22rem] md:left-20 ">
+              <Avatar
+                size={{ base: "xl", md: "2xl" }}
+                src={userProfile?.profilePicURL}
+              />
             </div>
 
             <div className="p-4 pt-1 md:pt-4 pb-0 ">
               <div className="ml-48 md:ml-60 flex flex-col gap-5">
-                <h1 className="text-3xl font-semibold">
+                <h1 className=" text-2xl md:text-3xl font-semibold pt-4">
                   {userProfile?.username}
                 </h1>
                 <span>
                   {visitingOwnProfileAndAuth && (
                     <Button
                       onClick={onOpen}
-                      colorScheme="red"
+                      colorScheme="blue"
                       size="lg"
                       variant="solid"
                     >
@@ -115,28 +122,31 @@ function ProfileLayout() {
                     </Button>
                   )}
                 </span>
-                <div className="text-gray-500 leading-4 pt-4 flex gap-5">
-                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
+                <div className="text-gray-500  leading-4 pt-4 flex gap-5">
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.posts?.length}{" "}
                     </span>{" "}
-                    Posts
+                    <p className="pl-2">Posts</p>
+  
                   </p>
-                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
+                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.followers?.length}{" "}
                     </span>{" "}
-                    Followers
+                    <p className="pl-2"> Followers</p>
+            
                   </p>
-                  <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center">
+                  <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center md:text-[2rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.following?.length}{" "}
                     </span>{" "}
-                    Following
+                
+                    <p className="pl-2"> Following</p>
                   </p>
                 </div>
                 <div>
-                  <p className="font-bold mb-2">
+                  <p className="mt-4 text-xl md:text-3xl font-bold mb-2">
                     {userProfile?.fullName.toUpperCase()}
                   </p>
                   <p className="text-gray-500">{userProfile.bio}</p>

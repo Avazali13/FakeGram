@@ -56,11 +56,16 @@ const CommentModal = ({ isOpen, onClose, post }) => {
     <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
       <ModalOverlay />
       <ModalContent
+        position={{base:"absolute",md:'relative'}}
+        marginTop={'23rem'}
+        marginLeft={{base:'0',md:'13rem'}}
+        bottom={0}
         bg="#1A202C"
+        // bg="BLACK"
         color="#E2E8F0"
         border="1px solid #2D3748"
         // maxW={"540px"}
-        maxW={{ base: "300px", md: "540px" }}
+        maxW={{ base: "300px", md: "520px" }}
         // maxH={{base:'230px',md:'210px'}}
         // maxH={"450px"}
         borderRadius={12}
@@ -85,7 +90,7 @@ const CommentModal = ({ isOpen, onClose, post }) => {
           <form onSubmit={handleSubmitComment} style={{ marginTop: "2rem" }}>
             <Input
               placeholder="Add a comment"
-              size={"md"}
+              size={"lg"}
               border="1px solid #CBD5E0"
               ref={commentRef}
               // mb={4}
@@ -96,7 +101,8 @@ const CommentModal = ({ isOpen, onClose, post }) => {
                 ml={"auto"}
                 colorScheme="blue"
                 size={"md"}
-                my={12}
+                mt={8}
+                mb={4}
                 isLoading={isCommenting}
               >
                 <p className="text-[1.4rem]">Post</p>
