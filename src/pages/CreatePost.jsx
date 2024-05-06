@@ -77,23 +77,43 @@ const CreatePost = () => {
           onClick={onOpen}
         >
           <CreatePostLogo />
-          <Box ml={1} color={"#4b5563"} display={{ base: "none", md: "block" }}>Create</Box>
+          <Box ml={1} color={"#4b5563"} display={{ base: "none", md: "block" }}>
+            Create
+          </Box>
         </Flex>
       </Tooltip>
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
 
-        <ModalContent bg={"#374159"} color={'#f9fafb'}  border={"1px solid gray"} borderRadius={12} maxW={{base:"270px",md:'440px'}}  >
-          <ModalHeader fontSize={14}>Create Post</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6} >
+        <ModalContent
+          bg={"#f9fafb"}
+          border={"3px solid #c7d2fe"}
+          borderRadius={12}
+          maxW={{ base: "270px", md: "440px" }}
+        >
+          <ModalHeader fontSize={14}>
+            <p className="pl-5 pt-[5px]">Create Post</p>
+          </ModalHeader>
+          <ModalCloseButton
+            color={"#4B5563"}
+            size={"lg"}
+            top={5}
+            right={5}
+            tabIndex={-1}
+          />
+          <ModalBody pb={6}>
             <Textarea
               placeholder="Post caption..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
-              minHeight={{base:'70px',md:'130px'}}
-              fontSize={13}
+              minHeight={{ base: "70px", md: "130px" }}
+              width={{ base: "380px" }}
+              _placeholder={{ color: "#a8a8a8" }}
        
+              fontSize={14}
+              border={"2px solid #c3c3c3"}
+              display={"flex"}
+              marginLeft={13}
             />
 
             <Input
@@ -107,7 +127,7 @@ const CreatePost = () => {
               onClick={() => imageRef.current.click()}
               style={{
                 marginTop: "15px",
-                marginLeft: "5px",
+                marginLeft: "13px",
                 cursor: "pointer",
               }}
               size={20}
@@ -132,14 +152,20 @@ const CreatePost = () => {
             )}
           </ModalBody>
 
-          <ModalFooter >
-            <Button onClick={handlePostCreation} isLoading={isLoading} mr={3} fontSize={14} colorScheme="blue">
-              Post
+          <ModalFooter>
+            <Button
+              onClick={handlePostCreation}
+              isLoading={isLoading}
+              mr={6}
+              mb={4}
+              fontSize={14}
+              colorScheme="blue"
+            >
+              <p className="py-8 px-6 text-[1.4rem]">Post</p>
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>{" "}
-      
     </>
   );
 };
@@ -187,7 +213,7 @@ function useCreatePost() {
 
       toast.success("post creaATED SUCCESFULLY");
     } catch (error) {
-      toast.error('gs');
+      toast.error("gs");
     } finally {
       setIsLoading(false);
     }

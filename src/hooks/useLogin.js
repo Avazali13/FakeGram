@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const useLogin = () => {
   const navigate = useNavigate();
 
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signInWithEmailAndPassword, , loading, error] =
     useSignInWithEmailAndPassword(auth);
   const loginUser = useAuthStore((state) => state.login);
 
@@ -20,15 +20,18 @@ const useLogin = () => {
     }
     try {
       const userCred = await signInWithEmailAndPassword(email, password);
+
       if (userCred) {
         const docRef = doc(firestore, "users", userCred.user.uid);
         const docSnap = await getDoc(docRef);
         localStorage.setItem("user-info", JSON.stringify(docSnap.data()));
         loginUser(docSnap.data());
         navigate("/dashboard");
+      } else {
+        toast.error("Invalid email or password");
       }
     } catch (error) {
-      toast.error("Invalid email or password");
+      toast.error(error.message);
     }
   };
 

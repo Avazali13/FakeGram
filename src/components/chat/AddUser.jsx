@@ -1,4 +1,3 @@
-
 // import { useRef, useState } from "react";
 // import styled from "styled-components";
 // import useSearchUser from "../../hooks/useSearchUser";
@@ -139,13 +138,11 @@
 // };
 // export default AddUser;
 
-
-
 //&
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import useSearchUser from "../../hooks/useSearchUser";
-import SuggestedUser from "../SuggestedUsers/SuggestedUser";
+import SuggestedUser from "../../pages/SuggestedUsers/SuggestedUser";
 import {
   arrayUnion,
   collection,
@@ -155,13 +152,19 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import {  firestore } from "../../firebase/firebase";
+import { firestore } from "../../firebase/firebase";
 import useAuthStore from "../../store/authStore";
 import toast from "react-hot-toast";
+import { GiCancel } from "react-icons/gi";
 
 const Adduser = styled.div`
+  width: 38rem;
   padding: 20px;
-  background-color: #1a202c;
+  /* background-color: #1a202c; */
+  /* background-color: #f1f1f1; */
+  background-color: #f9fafb;
+  
+  border: 1px solid #c7d2fe;
   border-radius: 10px;
   position: absolute;
   top: 0;
@@ -169,21 +172,20 @@ const Adduser = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  width: fit-content;
+  /* width: fit-content; */
   color: white;
   z-index: 10000;
   max-height: 30vh;
 
   @media screen and (max-width: 768px) {
-  position: fixed;
-  max-height: 40vh;
-
+    position: fixed;
+    max-height: 40vh;
   }
-
 `;
 
 const User = styled.div`
   margin-top: 20px;
+  margin-left: 17px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -193,19 +195,18 @@ const Detail = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-
- 
-
+  color: black;
 `;
 
 const InputStyled = styled.input`
   padding: 12px;
+
   border: none;
   outline: none;
   border-radius: 8px;
   background-color: #2d3748;
   color: #cbd5e0;
-  width: 350px;
+  width: 30rem;
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -216,19 +217,49 @@ const ButtonStyled = styled.button`
   padding: 12px 20px;
   border: none;
   outline: none;
+  width: 30rem;
   border-radius: 8px;
-  background-color: #4a90e2;
+  /* background-color: #4a90e2; */
+  background-color: #3083ff;
+  
+  
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #357bd8;
+    /* background-color: #357bd8; */
+    background-color: #1458bc;
   }
 
   @media screen and (max-width: 768px) {
-  padding: 6px 10px;
-/* font-size:0.rem; */
+    padding: 6px 10px;
+    /* font-size:0.rem; */
+    /* width: 5rem; */
+    margin-left: 1.5rem;
+    margin-top: 10px;
+  }
+`;
+
+const ButtonStyled2 = styled.button`
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  width: 13rem;
+  border-radius: 8px;
+  background-color: #3083ff;
+
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1458bc;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 6px 10px;
+    /* font-size:0.rem; */
     /* width: 5rem; */
     margin-left: 1.5rem;
     margin-top: 10px;
@@ -252,7 +283,7 @@ const AddUser = ({ setAddMode }) => {
   const [isAdded, setIsAdded] = useState(false);
   const searchRef = useRef(null);
   let { user, isLoading, getUserProfile, setUser } = useSearchUser();
-  console.log(user);
+
   const authUser = useAuthStore((state) => state.user);
 
   const handleSearch = (e) => {
@@ -316,8 +347,15 @@ const AddUser = ({ setAddMode }) => {
 
   return (
     <Adduser>
-      <CloseButton onClick={() => setAddMode(false)}>X</CloseButton>
-      <form className="flex flex-col gap-3" onSubmit={handleSearch}>
+      <CloseButton onClick={() => setAddMode(false)}>
+        <p className="text-[2.5rem] ">
+          <GiCancel />
+        </p>
+      </CloseButton>
+      <form
+        className="flex flex-col gap-3 items-center pt-2"
+        onSubmit={handleSearch}
+      >
         <InputStyled
           type="text"
           name="username"
@@ -331,9 +369,9 @@ const AddUser = ({ setAddMode }) => {
           {user && <SuggestedUser yes={true} user={user} setUser={setUser} />}
         </Detail>
         {user && !isAdded && (
-          <ButtonStyled disabled={isLoading} onClick={handleAdd}>
+          <ButtonStyled2 disabled={isLoading} onClick={handleAdd}>
             Add User
-          </ButtonStyled>
+          </ButtonStyled2>
         )}
       </User>
     </Adduser>

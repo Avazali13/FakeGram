@@ -10,8 +10,9 @@ const Main = styled.main`
   /* overflow-x: hidden; */
   overflow-x: hidden;
   overflow-y: unset;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   /* background-image: linear-gradient(to right bottom, #e0e0e0, #e0e0e6, #dee1ec, #dae2f2, #d5e3f8, #cde7fd, #c5ecff, #bdf1ff, #bcf9f6, #c9fee7, #e1ffd7, #ffffcc); */
+  background-color: var(--color-grey-50);
 
   scrollbar-color: var(--color-brand-500);
   @media only screen and (min-width: 768px) {
@@ -21,16 +22,19 @@ const Main = styled.main`
 
 const StyledAppLayout = styled.div`
   /* background-color: var(--color-grey-200); */
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
+  /* background-color: var(--color-grey-50); */
+
 
   /* overflow-x: hidden; */
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: 26rem 1fr;
     grid-template-rows: auto 1fr;
-    height: 100vh;
+    height: calc(100vh - 8.5rem);
   }
 `;
 

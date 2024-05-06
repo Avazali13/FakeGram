@@ -1,16 +1,4 @@
-import Heading from "../ui/Heading";
-import PostCard from "./Home/FeedPost";
-
-function Saved() {
-  return (
-    <>
-      <Heading className="mb-4 text-gray-500" as="h1">
-        Saved posts
-      </Heading>
-      <PostCard />
-      <PostCard />
-    </>
-  );
-}
-
+const Saved = () => {
+  return <div>Saved</div>;
+};
 export default Saved;

@@ -35,6 +35,18 @@ const StyledButton = styled(Button)`
   margin-top: 20px;
 `;
 
+const StyledButton2 = styled(Button)`
+  width: 100%;
+  margin-top: 20px;
+  background: -webkit-linear-gradient(
+    right,
+    #a445b2,
+    #fa4299,
+    #a445b2,
+    #fa4299
+  );
+`;
+
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
@@ -117,10 +129,14 @@ const SignupForm = () => {
               pattern: {
                 value: /\S+@\S+\.\S+/,
                 message: "Please provide a valid email address",
+                
               },
+              onChange: (e) => e.target.value.toLowerCase()
             })}
+            
           />
         </FormRow>
+
 
         <FormRow error={errors?.password?.message}>
           <StyledInput
@@ -134,6 +150,7 @@ const SignupForm = () => {
                 value: 8,
                 message: "Password needs a minimum of 8 characters",
               },
+            
             })}
           />
         </FormRow>
@@ -170,9 +187,9 @@ const SignupForm = () => {
         >
           <StyledLink to="/login">Cancel</StyledLink>
         </StyledButton> */}
-        <StyledButton type="submit" disabled={loading}>
+        <StyledButton2 type="submit" disabled={loading}>
           {loading ? "Creating new user..." : "Create new user"}
-        </StyledButton>
+        </StyledButton2>
         <div className="mt-4">
           <GoogleAuth>Sign up with Google</GoogleAuth>
         </div>

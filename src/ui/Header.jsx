@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
-import UserAvatar from "../pages/authentication/UserAvatar";
-import Avatar from "./Avatar";
+
 
 
 const StyledHeader = styled.header`
-  background-color: var(--color-grey-50);
-  padding: 1.2rem 4.8rem;
+  /* background-color: var(--color-grey-50); */
+  /* padding: 1.2rem 4.8rem; */
+  height: 8.5rem;
+  padding: 0px 4.8rem;
   /* border-bottom: 1px solid var(--color-grey-100); */
-
+border-bottom: 1px solid #c7d2fe;
   display: flex;
   gap: 2.4rem;
   align-items: center;

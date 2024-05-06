@@ -39,6 +39,27 @@ const Chat = () => {
   }, [user]);
 
   useEffect(() => {
+    if (endRef.current) {
+      setTimeout(() => {
+             const container = endRef.current;
+      const lastFewComments = Array.from(container.children).slice(-4);
+      const lastFewCommentsHeight = lastFewComments.reduce(
+        (acc, child) => acc + child.offsetHeight,
+        0
+      );
+      const containerHeight = container.offsetHeight;
+
+      if (lastFewCommentsHeight > containerHeight) {
+        container.scrollTop = container.scrollHeight;
+      } else {
+        container.scrollTop = container.scrollHeight - lastFewCommentsHeight;
+      } 
+      }, 500);
+
+    }
+  }, [chat]);
+
+  useEffect(() => {
     const unSub = onSnapshot(doc(firestore, "chats", chatId), (res) => {
       setChat(res.data());
     });
@@ -54,7 +75,8 @@ const Chat = () => {
     setOpen(false);
   };
 
-  const handleSend = async () => {
+  const handleSend = async (e) => {
+    e.preventDefault()
     if (val === "") return;
 
     try {
@@ -108,8 +130,8 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] " >
-      <div className="flex items-center gap-6 justify-center border-b-1 py-5 bg-slate-400">
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] sticky" >
+      <div className="flex items-center gap-6 justify-center border-b-1 py-5 " style={{backgroundColor: '#303030'}}>
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />
        </NavLink>
@@ -119,7 +141,7 @@ const Chat = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 overflow-x-hidden overflow-y-visible">
+      <div className="flex flex-col gap-5 overflow-x-hidden overflow-y-visible" ref={endRef}>
 
       
         {chat?.messages?.map((message) => (
@@ -134,19 +156,19 @@ const Chat = () => {
               src="../../../public/default-user.jpg"
               alt="userimg"
             /> */}
-            <div className="flex-1 flex flex-col gap-1">
+            <div className="flex-1 flex flex-col gap-1 pr-5">
             {/* {{ borderColor: isError ? 'red' : 'initial' }} */}
             {/* message.senderId === authUser.uid ? myMess : yourMess */}
-              <p style={{backgroundColor : message.senderId === authUser.uid ? "#015C4B" : "#1F2C33"}} className={`p-5 rounded-lg`}>{message.val}</p>
+              <p style={{backgroundColor : message.senderId === authUser.uid ? "#015C4B" : "#1F2C33"}} className={`p-4 rounded-xl rounded-br-none `}>{message.val}</p>
               <p>{timeAgo(message.createAt.seconds * 1000)}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="p-5 flex items-center justify-between mt-auto  gap-8 md:flex-row bg-slate-400">
-        <input
-          className="flex basis-3/4 border-white focus:outline-none border-2 outline-none bg-slate-400 p-5 rounded-2xl text-[16px] "
+      <form className="p-5 flex items-center justify-between mt-auto  gap-8 md:flex-row" style={{backgroundColor: '#303030'}} onSubmit={handleSend}>
+        <input style={{borderColor:'#989898'}}
+          className="flex basis-3/4  focus:outline-none border-[1px] outline-none bg-transparent p-5 rounded-2xl text-[16px] "
           placeholder={
             isCurrentUserBlocked || isReceiverBlocked
               ? "You Cannot send a message "
@@ -159,30 +181,33 @@ const Chat = () => {
         />
 
         <div className="relative">
-          <button onClick={() => setOpen((val) => !val)} className="w-[30px] mt-3">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+          <div onClick={() => setOpen((val) => !val)} className="w-[30px] ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#eee">
               <path d="M7.105 9.553a1 1 0 0 1 1.342-.448l2 1a1 1 0 0 1-.894 1.79l-2-1a1 1 0 0 1-.448-1.342zm8.448-.448-2 1a1 1 0 0 0 .894 1.79l2-1a1 1 0 1 0-.894-1.79zm-.328 5.263a4 4 0 0 1-6.45 0 1 1 0 0 0-1.55 1.264 6 6 0 0 0 9.55 0 1 1 0 1 0-1.55-1.264zM23 2v10a11 11 0 0 1-22 0V2a1 1 0 0 1 1.316-.949l4.229 1.41a10.914 10.914 0 0 1 10.91 0l4.229-1.41A1 1 0 0 1 23 2zm-2 10a9 9 0 1 0-9 9 9.029 9.029 0 0 0 9-9z" />
             </svg>
-          </button>
+          </div>
           <div className="absolute bottom-12 right-0">
             <EmojiPicker open={open} onEmojiClick={handleEmoji} />
           </div>
         </div>
         <button
-        className="text-md py-4 px-8 rounded-md"
-          onClick={handleSend}
+
+        type="submit"
+        className="text-md px-2 rounded-md"
+          // onClick={handleSend}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         >
-        <p className="text-[3rem]">  <IoMdSend/></p>
+        <p style={{color:'#eee'}} className="text-[3rem]">  <IoMdSend/></p>
         </button>
-        <button onClick={handleBlock} className="text-md py-2 px-8  rounded-md">
+
+        <button onClick={handleBlock} className="text-md py-2 px-8  rounded-md" style={{color:'#ddd'}}>
           {isCurrentUserBlocked
             ? "You are blocked"
             : isReceiverBlocked
             ? "User blocked"
             : "Block User"}
         </button>
-      </div>
+      </form>
     </div>
   );
 };

@@ -17,7 +17,7 @@ import {
 import usePostsComment from "../../hooks/usePostsComment.js";
 import useLikePost from "../../hooks/useLikePost.js";
 import { timeAgo } from "../../utils/timeAgo.js";
-import CommentModal from "../Home/CommentModal.jsx";
+import CommentModal from "../../components/Home/CommentModal.jsx";
 
 const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
   const { isCommenting, handlePostComment } = usePostsComment();
@@ -48,7 +48,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
           <CommentLogo fill={fill} />
         </Box>
       </Flex>
-      <Text fontWeight={600} fontSize={"xl"} mb={2} color={'white'}>
+      <Text fontWeight={600} fontSize={"xl"} mb={2} color={'black'}>
         {likes} likes
       </Text>
 

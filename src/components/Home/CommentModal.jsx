@@ -11,10 +11,9 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import Comment from "../profile components/Comment";
+import Comment from "../../pages/profile components/Comment";
 import usePostsComment from "../../hooks/usePostsComment";
 import { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
 
 const CommentModal = ({ isOpen, onClose, post }) => {
   const { handlePostComment, isCommenting } = usePostsComment();
@@ -36,7 +35,8 @@ const CommentModal = ({ isOpen, onClose, post }) => {
 
   useEffect(() => {
     if (isOpen && scrollableContainerRef.current) {
-      const container = scrollableContainerRef.current;
+      setTimeout(() => {
+             const container = scrollableContainerRef.current;
       const lastFewComments = Array.from(container.children).slice(-4);
       const lastFewCommentsHeight = lastFewComments.reduce(
         (acc, child) => acc + child.offsetHeight,
@@ -48,7 +48,9 @@ const CommentModal = ({ isOpen, onClose, post }) => {
         container.scrollTop = container.scrollHeight;
       } else {
         container.scrollTop = container.scrollHeight - lastFewCommentsHeight;
-      }
+      } 
+      }, 500);
+
     }
   }, [isOpen, comments]);
 
@@ -56,9 +58,9 @@ const CommentModal = ({ isOpen, onClose, post }) => {
     <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
       <ModalOverlay />
       <ModalContent
-        position={{base:"absolute",md:'relative'}}
-        marginTop={'23rem'}
-        marginLeft={{base:'0',md:'13rem'}}
+        position={{ base: "absolute", md: "relative" }}
+        marginTop={"23rem"}
+        marginLeft={{ base: "0", md: "13rem" }}
         bottom={0}
         bg="#1A202C"
         // bg="BLACK"

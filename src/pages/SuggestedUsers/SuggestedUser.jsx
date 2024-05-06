@@ -51,7 +51,7 @@ function SuggestedUser({ user, setUser, yes }) {
         <button
           disabled={isUpdating}
           onClick={onFollowUser}
-          className={`bg-blue-500 text-white font-semibold py-2 px-4 rounded-md focus:outline-none ${
+          className={`bg-blue-500 text-white font-semibold py-3 px-5 text-[14px] rounded-md focus:outline-none ${
             isFollowing ? "bg-red-500" : ""
           }`}
         >

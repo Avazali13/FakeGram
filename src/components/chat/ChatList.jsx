@@ -71,8 +71,8 @@ const ChatList = () => {
     chat.user.username.toLowerCase().includes(input.toLowerCase())
   );
   return (
-    <div className="flex-1 overflow-y-visible">
-      <div className="flex items-center gap-5 p-5 ">
+    <div className="flex-1 overflow-y-auto max-h-[60rem]">
+      <div className="flex items-center gap-5 p-5">
         <div className="flex flex-1 items-center gap-5 rounded-md bg-gray-100 px-3 py-2">
           <CiSearch className="text-gray-500 cursor-pointer" />
           <input

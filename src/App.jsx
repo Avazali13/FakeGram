@@ -4,9 +4,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 
 import Login from "./pages/Login";
-import Dashboard from "./pages/Home/Dashboard";
+import Dashboard from "./pages/Dashboard";
 // import Messages from "./pages/Messages";
-import Messages from "./pages/chat/Messages";
+import Messages from "./pages/Messages";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import GloabalStyles from "./styles/GlobalStyles";
@@ -14,7 +14,6 @@ import GloabalStyles from "./styles/GlobalStyles";
 import Settings from "./pages/Settings";
 
 import Signup from "./pages/Signup";
-import Account from "./pages/Account";
 import ProfileLayout from "./pages/profile components/ProfileLayout";
 import Posts from "./pages/profile components/ProfilePosts";
 import Saved from "./pages/Saved";
@@ -63,13 +62,12 @@ function App() {
             <Route path="messages" element={<Messages />} />
             <Route path="saved" element={<Saved />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="account" element={<Account />} />
             <Route path="suggested" element={<SuggestedUsers />} />
             <Route path="/:username" element={<ProfileLayout />}>
               <Route index element={<Navigate replace to="posts" />} />
               <Route path="posts" element={<Posts />} />
-              <Route path="following" element={<Following/>} />
-              <Route path="followers" element={<Followers/>} />
+              <Route path="following" element={<Following />} />
+              <Route path="followers" element={<Followers />} />
             </Route>
           </Route>
           <Route path="signup" element={<Signup />} />
@@ -102,4 +100,3 @@ function App() {
 }
 
 export default App;
-

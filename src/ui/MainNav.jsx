@@ -50,7 +50,8 @@ export const StyledNavLink = styled(NavLink)`
     @media only screen and (min-width: 768px) {
       padding: 1.2rem 2.4rem;
       font-size: 1.6rem;
-      padding-right: 0.4rem;
+      /* padding-right: 0.4rem; */
+      width: 100%;
       gap: 1.2rem;
       margin: 0 0;
     }
@@ -102,7 +103,7 @@ function MainNav() {
         </StyledNavLink2>
         <StyledNavLink to="suggested">
           <HiOutlineUsers  />
-          <span className="hidden md:block">Suggested Users</span>
+          <span className="hidden md:block">Suggested</span>
         </StyledNavLink>{" "}
         {/* <StyledNavLink to="saved">
           <GoBookmark />
@@ -148,9 +149,10 @@ export const StyledNavLink2 = styled(NavLink)`
     @media only screen and (min-width: 768px) {
       padding: 1.2rem 2.4rem;
       font-size: 1.6rem;
-      padding-right: 0.4rem;
+      /* padding-right: 0.4rem; */
       gap: 1.2rem;
       margin: 0 0;
+      width: 100%;
     }
   }
 

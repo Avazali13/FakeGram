@@ -74,14 +74,14 @@ const CreatePost = () => {
           maxW={{ base: "270px", md: "440px" }}
         >
           <ModalHeader fontSize={18}>Search User</ModalHeader>
-          <ModalCloseButton color={"#4B5563"} size={"xl"} />
+          <ModalCloseButton color={"#4B5563"} size={"lg"} top={5} right={5} tabIndex={-1} />
           <ModalBody pb={6}>
             <form onSubmit={handleSearchUser}>
               <FormControl>
                 <FormLabel fontSize={"16"}>Username</FormLabel>
                 <Input
                   padding={8}
-                  border={"1px solid #fc83bb"}
+                  // border={"1px solid #fc83bb"}
                   fontSize={"16"}
                   placeholder="Example:avazali13"
                   ref={searchRef}

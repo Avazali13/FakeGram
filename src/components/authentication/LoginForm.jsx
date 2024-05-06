@@ -70,84 +70,6 @@
 // export default LoginForm;
 
 //^
-// import { useState } from "react";
-// import styled from "styled-components";
-// import Button from "../../ui/Button";
-// import Form from "../../ui/Form";
-// import Input from "../../ui/Input";
-// import FormRowVertical from "../../ui/FormRowVertical";
-// import SpinnerMini from "../../ui/SpinnerMini";
-// import GoogleAuth from "./GoogleAuth";
-// import useLogin from "../../hooks/useLogin";
-
-// const LoginFormContainer = styled.div`
-//   max-width: 400px;
-//   margin: auto;
-//   padding: 20px;
-//   border: 1px solid #ccc;
-//   border-radius: 8px;
-//   background-color: #fff;
-// `;
-
-// const StyledButton = styled(Button)`
-//   width: 100%;
-//   margin-top: 20px;
-// `;
-
-// const LoginForm = () => {
-//   const [inputs, setInputs] = useState({
-//     email: "",
-//     password: "",
-//   });
-
-//   const { login, loading } = useLogin();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     login(inputs.email, inputs.password, {
-//       onSettled: () => {
-//         setInputs({ email: "", password: "" });
-//       },
-//     });
-//   };
-
-//   return (
-//     <LoginFormContainer>
-//       <Form onSubmit={handleSubmit}>
-//         <FormRowVertical label="Email address">
-//           <Input
-//             type="email"
-//             id="email"
-//             autoComplete="username"
-//             value={inputs.email}
-//             onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-//             disabled={loading}
-//             required
-//           />
-//         </FormRowVertical>
-
-//         <FormRowVertical label="Password">
-//           <Input
-//             type="password"
-//             id="password"
-//             autoComplete="current-password"
-//             value={inputs.password}
-//             onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-//             disabled={loading}
-//             required
-//           />
-//         </FormRowVertical>
-
-//         <StyledButton size="large" type="submit" disabled={loading}>
-//           {!loading ? "Log in" : <SpinnerMini />}
-//         </StyledButton>
-//       </Form>
-//       <GoogleAuth>Sign in with Google</GoogleAuth>
-//     </LoginFormContainer>
-//   );
-// };
-
-// export default LoginForm;
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -162,7 +84,7 @@ import { NavLink } from "react-router-dom";
 
 // Styled components for the login form
 const LoginFormContainer = styled.div`
-  min-width: 390px;
+  /* min-width: 390px; */
   background: #fff;
   min-height: 500px;
   padding: 20px;
@@ -202,14 +124,14 @@ const StyledInput = styled(Input)`
   &:focus {
     border-color: #fc83bb;
   }
-  `;
+`;
 
-  const Title = styled.div`
-    font-size: 35px;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  `;
+const Title = styled.div`
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+`;
 const LoginForm = () => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -227,7 +149,6 @@ const LoginForm = () => {
     });
   };
 
-
   return (
     <LoginFormContainer>
       <div className="wrapper">
@@ -244,10 +165,13 @@ const LoginForm = () => {
                 autoComplete="username"
                 value={inputs.email}
                 onChange={(e) =>
-                  setInputs({ ...inputs, email: e.target.value })
+                  setInputs({
+                    ...inputs,
+                    email: e.target.value.trim().toLowerCase(),
+                  })
                 }
                 disabled={loading}
-                required
+                // required
               />
             </FormRowVertical>
 
@@ -262,7 +186,7 @@ const LoginForm = () => {
                   setInputs({ ...inputs, password: e.target.value })
                 }
                 disabled={loading}
-                required
+                // required
               />
             </FormRowVertical>
 
@@ -289,4 +213,4 @@ const LoginForm = () => {
 
 export default LoginForm;
 
-<NavLink>Signup now</NavLink>;
+// <NavLink>Signup now</NavLink>;

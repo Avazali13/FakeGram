@@ -4,7 +4,7 @@ import { Avatar } from "@chakra-ui/react";
 import ButtonIcon from "./ButtonIcon";
 import { HiOutlineUser } from "react-icons/hi2";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logout from "../pages/authentication/Logout";
+import Logout from "../components/authentication/Logout";
 // import Avatar from "./Avatar";
 import useAuthStore from "../store/authStore";
 
@@ -22,7 +22,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <NavLink to={`${authUser.username}`}>
         <ButtonIcon onClick={() => navigate("/:username")}>
-          {<Avatar size={'xl'} src={authUser.profilePicURL} /> || <HiOutlineUser />}
+          {<Avatar size={'lg'} src={authUser.profilePicURL} /> || <HiOutlineUser />}
         </ButtonIcon>
       </NavLink>
       <li>{authUser.username}</li>

@@ -36,7 +36,7 @@ const useEditProfile = () => {
       const updatedUser = {
         ...authUser,
         fullName: inputs.fullName || authUser.fullName,
-        username: inputs.username.toLowerCase() || authUser.username,
+        username: inputs.username.toLowerCase().replaceAll(' ','') || authUser.username,
         // username: inputs.username.toLowerCase(),
         // username: inputs.username ? inputs.username.toLowerCase() : null,
         // bio: inputs.bio || authUser.bio,

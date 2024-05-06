@@ -11,7 +11,7 @@ const PostHeader = ({ post, creatorProfile }) => {
 			<Flex alignItems={"center"} gap={2}>
 				{creatorProfile ? (
 					<Link to={`/${creatorProfile.username}`}>
-						<Avatar src={creatorProfile.profilePicURL} alt='user profile pic'  size={"md"} />
+						<Avatar src={creatorProfile.profilePicURL} alt='user profile pic'  size={"lg"} />
 					</Link>
 				) : (
 					<SkeletonCircle size='10' />
@@ -34,7 +34,7 @@ const PostHeader = ({ post, creatorProfile }) => {
 					fontSize={15}
 					color={"blue.500"}
 					fontWeight={"bold"}
-					_hover={{ color: "#4f46e5",}}
+					_hover={{ color: "#1458bc",}}
 					transition={"0.3s ease-in-out"}
 					onClick={handleFollowUser}
 					isLoading={isUpdating}
@@ -47,3 +47,5 @@ const PostHeader = ({ post, creatorProfile }) => {
 };
 
 export default PostHeader;
+
+

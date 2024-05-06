@@ -40,7 +40,7 @@ const useSignUpWithEmail = () => {
         const userDoc = {
           uid: newUser.user.uid,
           email: email,
-          username: userName.toLowerCase(),
+          username: userName.toLowerCase().replaceAll(' ',''),
           fullName: fullName,
           bio: "",
           profilePicURL: "",

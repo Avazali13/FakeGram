@@ -1,12 +1,12 @@
 // import Form from "../ui/Form";
 import styled from "styled-components";
-import SignupForm from "./authentication/SignupForm";
+import SignupForm from "../components/authentication/SignupForm";
 
 const SignUpLayout = styled.main`
   min-height: 100vh;
   display: grid;
   /* grid-template-columns: 48rem; */
-  align-content: flex-end;
+  /* align-content: flex-end; */
   justify-content: center;
   gap: 3.2rem;
 

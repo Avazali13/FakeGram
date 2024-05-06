@@ -73,10 +73,10 @@
 // export default Messages;
 
 import styled from "styled-components";
-import List from "./List";
-import Chat from "./Chat";
-import useAuthStore from "../../store/authStore";
-import { useChatStore } from "../../store/chatStore";
+import List from "../components/chat/List";
+import Chat from "../components/chat/Chat";
+import useAuthStore from "../store/authStore";
+import { useChatStore } from "../store/chatStore";
 
 const MessagesContainer = styled.div`
   display: flex;
