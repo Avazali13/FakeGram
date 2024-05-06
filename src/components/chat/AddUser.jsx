@@ -223,6 +223,7 @@ const ButtonStyled = styled.button`
   background-color: #3083ff;
   
   
+  
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;

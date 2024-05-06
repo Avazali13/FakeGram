@@ -159,8 +159,7 @@ const LoginForm = () => {
           <div className="form-inner">
             <FormRowVertical>
               <StyledInput
-                placeholder="Email Address"
-                type="email"
+                placeholder="Email Address" 
                 id="email"
                 autoComplete="username"
                 value={inputs.email}

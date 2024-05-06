@@ -8,19 +8,19 @@ function Comment({ comment }) {
   if (isLoading) return <CommentSkeleton />;
   return (
     <div >
-      <Flex gap={4} mb={3}    color={"#e0e7ff"} >
+      <Flex gap={4} mb={3}     >
         <NavLink to={`/${userProfile.username}`}>
           <Avatar src={userProfile?.profilePicURL}  size={"md"} />
         </NavLink>
         <Flex direction={"column"}>
           <Flex gap={2}>
             <NavLink to={`/${userProfile.username}`}>
-              <Text fontWeight={"bold"} fontSize={15} minWidth={"100px"} >
+              <Text fontWeight={"semibold"} fontSize={15} minWidth={"100px"} >
                 {userProfile?.username}
               </Text>
             </NavLink>
             
-            <Text fontSize={15} color={"gray.400"} fontFamily={'serif'}>
+            <Text fontSize={15} color={"black"}  fontFamily={'"Inter", sans-serif'} >
               {comment.comment}
             </Text>
           </Flex>

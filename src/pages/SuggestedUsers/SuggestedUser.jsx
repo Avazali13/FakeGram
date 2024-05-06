@@ -16,10 +16,11 @@ function SuggestedUser({ user, setUser, yes }) {
         : [...user.followers, authUser],
     });
   };
-  const {username}=useParams()
+  const { username } = useParams();
   const location = useLocation();
   console.log(location.pathname);
 
+  let cst = "color:'red'";
 
   return (
     <div className="suggested-user flex items-center justify-between border-b border-gray-300 py-4">
@@ -36,24 +37,22 @@ function SuggestedUser({ user, setUser, yes }) {
           </p>
         </div>
       </div>
-      {user.uid !== authUser.uid && username===authUser.username && (
+      {user.uid !== authUser.uid && username === authUser.username && (
         <button
+          style={{ backgroundColor: `${isFollowing ? "#e13b3b" : "#3083ff"}` }}
           disabled={isUpdating}
           onClick={onFollowUser}
-          className={`bg-blue-500 text-white font-semibold py-2 px-4 rounded-md focus:outline-none ${
-            isFollowing ? "bg-red-500" : ""
-          }`}
+          className={` text-white font-semibold py-2 px-4 rounded-md focus:outline-none`}
         >
           {isFollowing ? "Unfollow" : "Follow"}
         </button>
       )}
-      {location.pathname==='/suggested' && (
+      {location.pathname === "/suggested" && (
         <button
+          style={{ backgroundColor: `${isFollowing ? "#e13b3b" : "#3083ff"}` }}
           disabled={isUpdating}
           onClick={onFollowUser}
-          className={`bg-blue-500 text-white font-semibold py-3 px-5 text-[14px] rounded-md focus:outline-none ${
-            isFollowing ? "bg-red-500" : ""
-          }`}
+          className={`bg-blue-500 text-white font-semibold py-3 px-5 text-[14px] rounded-md focus:outline-none`}
         >
           {isFollowing ? "Unfollow" : "Follow"}
         </button>

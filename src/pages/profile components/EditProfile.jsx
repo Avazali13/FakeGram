@@ -53,19 +53,19 @@ const EditProfile = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} colorScheme="blue">
       <ModalOverlay />
       <ModalContent position={"absolute"} top={0} bg="white" borderRadius="xl" minW={{base:'10rem',md:'43rem'}}>
-        <ModalHeader>Edit Profile</ModalHeader>
-        <ModalCloseButton />
+        <ModalHeader ><p className="text-[2rem] pt-4">Edit Profile</p></ModalHeader>
+        <ModalCloseButton color={"#4B5563"} size={"xl"} top={10} right={7} tabIndex={-1} />
         <ModalBody>
           <Flex direction="column" align="center" p={6}>
             <Avatar
               size={{base:'xl',md:'2xl'}}
               src={selectedFile || authUser.profilePicURL}
-              mb={4}
+              mb={3}
             />
 
-            <img src={selectedFiles || authUser.backgrondPicURL} alt="bg" />
+            <img src={selectedFiles || authUser.backgrondPicURL} alt="bg" className="max-w-[29rem]" />
 
-            <Button onClick={() => fileRefs.current.click()} mb={4}>
+            <Button onClick={() => fileRefs.current.click()} mt={3} mb={4} size={'lg'} paddingX={4} paddingY={5} >
               Edit bg
             </Button>
             <Input
@@ -74,7 +74,7 @@ const EditProfile = ({ isOpen, onClose }) => {
               ref={fileRefs}
               onChange={handleImageChanges}
             />
-            <Button onClick={() => fileRef.current.click()} mb={4}>
+            <Button onClick={() => fileRef.current.click()} mb={4} size={'lg'} paddingX={4} paddingY={5}>
               Edit Profile Picture
             </Button>
             <Input
@@ -119,15 +119,22 @@ const EditProfile = ({ isOpen, onClose }) => {
             </FormControl>
             <Stack direction="row" mt={6} spacing={4}>
               <Button
-                colorScheme="red"
+                // colorScheme="red"
+                bg={'#e13b3b'}
+                _hover={{ bg: "#b31a1a" }}
+              color={'white'}
+
                 onClick={onClose}
                 isLoading={isUpdating}
-                size={'md'}
+                size={'lg'}
               >
                 <p className=" text-[1.4rem]">Cancel</p>
               </Button>
               <Button
-                colorScheme="blue"
+              _hover={{ bg: "#1458bc" }}
+              bg={'#3083ff'}
+              color={'white'}
+              size={'lg'}
                 onClick={handleEditProfile}
                 isLoading={isUpdating}
               >

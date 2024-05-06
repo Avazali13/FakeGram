@@ -221,14 +221,14 @@ export const CreatePostLogo = () => (
   </svg>
 );
 
-export const CommentLogo = ({fill}) => (
+export const CommentLogo = () => (
   <svg
     aria-label="Comment"
-    // color="rgba(0, 0, 0, 0.12)"
-    color='rgb(245, 245, 245)'
-    // fill='rgb(245, 245, 245)'
-    fill={fill}
-    // fill="rgba(0, 0, 0, 0.12)"
+    color="black"
+    // color='rgb(245, 245, 245)'
+    fill='black'
+
+
     height="24"
     role="img"
     viewBox="0 0 24 24"

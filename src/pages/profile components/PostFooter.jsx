@@ -19,7 +19,7 @@ import useLikePost from "../../hooks/useLikePost.js";
 import { timeAgo } from "../../utils/timeAgo.js";
 import CommentModal from "../../components/Home/CommentModal.jsx";
 
-const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
+const PostFooter = ({ post, isProfilePage, creatorProfile, fill }) => {
   const { isCommenting, handlePostComment } = usePostsComment();
   const [comment, setComment] = useState("");
   const commentRef = useRef(null);
@@ -35,9 +35,9 @@ const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
 
   return (
     <Box mb={20} marginTop={"auto"} pl={1}>
-      <Flex alignItems={"center"} gap={5} w={"full"} pt={0} mb={2} mt={4} >
-        <Box cursor={"pointer"} fontSize={18} onClick={handleLikePost} >
-          {!isLiked ? <NotificationsLogo fill={fill} /> : <UnlikeLogo  />}
+      <Flex alignItems={"center"} gap={5} w={"full"} pt={0} mb={2} mt={4}>
+        <Box cursor={"pointer"} fontSize={18} onClick={handleLikePost}>
+          {!isLiked ? <NotificationsLogo  /> : <UnlikeLogo />}
         </Box>
 
         <Box
@@ -45,10 +45,10 @@ const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
           fontSize={18}
           onClick={() => commentRef.current.focus()}
         >
-          <CommentLogo fill={fill} />
+          <CommentLogo />
         </Box>
       </Flex>
-      <Text fontWeight={600} fontSize={"xl"} mb={2} color={'black'}>
+      <Text fontWeight={600} fontSize={"xl"} mb={2} color={"black"}>
         {likes} likes
       </Text>
 
@@ -87,15 +87,17 @@ const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
         gap={2}
         justifyContent={"space-between"}
         w={"full"}
- 
-  
       >
         <InputGroup>
+
           <Input
             mt={3}
             variant={"flushed"}
             // color={"#e0e7ff"}
-            color={'white'}
+            color={"black"}
+            
+      
+            pl={4}
             placeholder={"Add a comment..."}
             fontSize="14px"
             onChange={(e) => setComment(e.target.value)}
@@ -105,14 +107,14 @@ const PostFooter = ({ post, isProfilePage, creatorProfile,fill }) => {
           <InputRightElement>
             <Button
               // bgImage="url('https://bit.ly/2Z4KKcF')"
-              mr={4}
-              mt={4}
-              color={"blue.500"}
+              mr={8}
+              mt={5}
+              color={"#3083ff"}
               fontWeight={600}
               cursor={"pointer"}
               fontSize="16px"
               // _hover={{ color: "#4f46e5" }}
-              _hover={{ color: "red" }}
+              _hover={{ color: "#1458bc;" }}
               transition={"0.3s ease-in-out"}
               bg={"transparent"}
               onClick={handleSubmitComment}

@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-// import Avatar from "../../ui/Avatar";
+import Avatar from "../../ui/Avatar";
 import Card from "../../ui/Card";
 
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -12,7 +12,7 @@ import useAuthStore from "../../store/authStore";
 import useGetUserProfileByUsername from "../../hooks/useGetUserProfileByUsername";
 import PageNotFound from "../PageNotFound";
 import {
-  Avatar,
+  // Avatar,
   Button,
   Flex,
   Skeleton,
@@ -76,35 +76,38 @@ function ProfileLayout() {
         <ProfileHeaderSkeleton />
       ) : (
         <Card noPadding={true}>
-          <div className="relative overflow-hidden rounded-xl bg-slate-50">
+          <div className="relative overflow-hidden rounded-xl bg-slate-50 ">
             <div className="h-60 md:h-[34rem]  object-contain overflow-hidden flex justify-center items-center">
               <img
-              
                 src={userProfile?.backgrondPicURL || defaultİmg}
                 alt="post-img"
               />
             </div>
-            <div className="absolute bottom-[21rem] left-8 md:bottom-[22rem] md:left-20 ">
-              <Avatar
-                size={{ base: "xl", md: "2xl" }}
+            <div className="absolute bottom-[21rem] left-8 md:bottom-[23rem] md:left-15 ">
+              {/* <Avatar
+           
+                size={{ base: "xl", md: "3xl" }}
                 src={userProfile?.profilePicURL}
-              />
+              /> */}
+              <Avatar size='lg' src={userProfile?.profilePicURL} />
             </div>
 
             <div className="p-4 pt-1 md:pt-4 pb-0 ">
               <div className="ml-48 md:ml-60 flex flex-col gap-5">
-                <h1 className=" text-2xl md:text-3xl font-semibold pt-4">
+                <h1 className=" text-2xl md:text-4xl font-semibold pt-4">
                   {userProfile?.username}
                 </h1>
                 <span>
                   {visitingOwnProfileAndAuth && (
                     <Button
                       onClick={onOpen}
-                      colorScheme="blue"
-                      size="md"
+                      // colorScheme="blue"
+                      color={'white'}
+                      style={{ backgroundColor:"#3083ff" }}
+                      size="lg"
                       variant="solid"
                     >
-                    <p className="text-[1.8rem]"> Edit </p>
+                      <p className="text-[1.8rem]"> Edit </p>
                     </Button>
                   )}
                   {visitingOwnProfileAndAuth || (
@@ -122,37 +125,34 @@ function ProfileLayout() {
                     </Button>
                   )}
                 </span>
-                <div className="text-gray-500  leading-4 pt-4 flex gap-5">
+                <div className="text-gray-500  leading-4 pt-6 flex gap-5">
                   <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.posts?.length}{" "}
                     </span>{" "}
                     <p className="pl-2">Posts</p>
-  
                   </p>
                   <p className="flex flex-col md:flex-row gap-3 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.followers?.length}{" "}
                     </span>{" "}
                     <p className="pl-2"> Followers</p>
-            
                   </p>
                   <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center md:text-[1.8rem] text-[1.5rem]">
                     <span className="font-bold text-black">
                       {userProfile?.following?.length}{" "}
                     </span>{" "}
-                
                     <p className="pl-2"> Following</p>
                   </p>
                 </div>
                 <div>
-                  <p className="mt-4 text-xl md:text-3xl font-bold mb-2">
+                  <p className="mt-7 text-xl md:text-3xl font-bold mb-2">
                     {userProfile?.fullName.toUpperCase()}
                   </p>
                   <p className="text-gray-500">{userProfile.bio}</p>
                 </div>
               </div>
-              <div className="md:mt-24 mt-16 flex justify-between md:justify-normal  md:gap-9 ">
+              <div className="md:mt-2 mb-5 mt-16 ml-8 flex justify-between md:justify-normal  md:gap-9 ">
                 <StyledNav to="posts">
                   <span className="text-4xl">
                     <IoDocumentTextOutline />

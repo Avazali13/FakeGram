@@ -36,21 +36,20 @@ const CommentModal = ({ isOpen, onClose, post }) => {
   useEffect(() => {
     if (isOpen && scrollableContainerRef.current) {
       setTimeout(() => {
-             const container = scrollableContainerRef.current;
-      const lastFewComments = Array.from(container.children).slice(-4);
-      const lastFewCommentsHeight = lastFewComments.reduce(
-        (acc, child) => acc + child.offsetHeight,
-        0
-      );
-      const containerHeight = container.offsetHeight;
+        const container = scrollableContainerRef.current;
+        const lastFewComments = Array.from(container.children).slice(-4);
+        const lastFewCommentsHeight = lastFewComments.reduce(
+          (acc, child) => acc + child.offsetHeight,
+          0
+        );
+        const containerHeight = container.offsetHeight;
 
-      if (lastFewCommentsHeight > containerHeight) {
-        container.scrollTop = container.scrollHeight;
-      } else {
-        container.scrollTop = container.scrollHeight - lastFewCommentsHeight;
-      } 
+        if (lastFewCommentsHeight > containerHeight) {
+          container.scrollTop = container.scrollHeight;
+        } else {
+          container.scrollTop = container.scrollHeight - lastFewCommentsHeight;
+        }
       }, 500);
-
     }
   }, [isOpen, comments]);
 
@@ -58,25 +57,30 @@ const CommentModal = ({ isOpen, onClose, post }) => {
     <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
       <ModalOverlay />
       <ModalContent
+        bg={"#f9fafb"}
         position={{ base: "absolute", md: "relative" }}
         marginTop={"23rem"}
         marginLeft={{ base: "0", md: "13rem" }}
         bottom={0}
-        bg="#1A202C"
+        border={"3px solid #c7d2fe"}
         // bg="BLACK"
-        color="#E2E8F0"
-        border="1px solid #2D3748"
+
         // maxW={"540px"}
         maxW={{ base: "300px", md: "520px" }}
         // maxH={{base:'230px',md:'210px'}}
         // maxH={"450px"}
         borderRadius={12}
-        overflow={"scroll"}
-        overflowX={"hidden"}
-        overflowY={"hidden"}
+        overflow={"auto"}
       >
-        <ModalHeader>All Comments</ModalHeader>
-        <ModalCloseButton size={"lg"} color="#CBD5E0" />
+      
+        <ModalHeader><p className="pt-4 text-[1.4rem] pl-1">All Comments</p></ModalHeader>
+        <ModalCloseButton
+          color={"#4B5563"}
+          size={"lg"}
+          top={5}
+          right={5}
+          tabIndex={-1}
+        />
         <ModalBody>
           <div
             ref={scrollableContainerRef}
@@ -102,7 +106,7 @@ const CommentModal = ({ isOpen, onClose, post }) => {
                 type="submit"
                 ml={"auto"}
                 colorScheme="blue"
-                size={"md"}
+                size={"lg"}
                 mt={8}
                 mb={4}
                 isLoading={isCommenting}

@@ -87,7 +87,7 @@ const CreatePost = () => {
 
         <ModalContent
           bg={"#f9fafb"}
-          border={"3px solid #c7d2fe"}
+       
           borderRadius={12}
           maxW={{ base: "270px", md: "440px" }}
         >
@@ -184,7 +184,7 @@ function useCreatePost() {
 
   const handleCreatePost = async (selectedFile, caption) => {
     if (isLoading) return;
-    if (!selectedFile) throw new Error("Please select image");
+    if (!selectedFile) throw new Error("Please Select Image");
     const newPost = {
       caption: caption,
       likes: [],
@@ -211,7 +211,7 @@ function useCreatePost() {
         addPost({ ...newPost, id: postDocRef.id });
       }
 
-      toast.success("post creaATED SUCCESFULLY");
+      toast.success("Post Created Successfully");
     } catch (error) {
       toast.error("gs");
     } finally {
