@@ -38,13 +38,7 @@ const StyledButton = styled(Button)`
 const StyledButton2 = styled(Button)`
   width: 100%;
   margin-top: 20px;
-  background: -webkit-linear-gradient(
-    right,
-    #a445b2,
-    #fa4299,
-    #a445b2,
-    #fa4299
-  );
+  background: -webkit-linear-gradient(right, #0300ab, #3827ff);
 `;
 
 const StyledLink = styled(NavLink)`
@@ -74,7 +68,7 @@ const StyledInput = styled(Input)`
   font-size: 17px;
   transition: all 0.3s ease;
   &:focus {
-    border-color: #fc83bb;
+    border-color: #0300AB;
   }
 `;
 
@@ -120,7 +114,6 @@ const SignupForm = () => {
 
         <FormRow error={errors?.email?.message}>
           <StyledInput
-            type="email"
             id="email"
             placeholder="Email Address"
             disabled={loading}
@@ -131,7 +124,7 @@ const SignupForm = () => {
                 message: "Please provide a valid email address",
                 
               },
-              onChange: (e) => e.target.value.toLowerCase()
+              onChange: (e) => e.target.value.toLowerCase().trim()
             })}
             
           />
@@ -187,7 +180,7 @@ const SignupForm = () => {
         >
           <StyledLink to="/login">Cancel</StyledLink>
         </StyledButton> */}
-        <StyledButton2 type="submit" disabled={loading}>
+        <StyledButton2 type="submit" disabled={loading} className="mb-8">
           {loading ? "Creating new user..." : "Create new user"}
         </StyledButton2>
         <div className="mt-4">

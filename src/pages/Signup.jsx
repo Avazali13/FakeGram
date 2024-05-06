@@ -12,7 +12,7 @@ const SignUpLayout = styled.main`
 
   padding-bottom: 3rem;
   /* background-color: var(--color-grey-50); */
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(right, #0300ab, #3827ff);
   `
 
 

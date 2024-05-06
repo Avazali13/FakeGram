@@ -101,13 +101,7 @@ const StyledButton = styled(Button)`
   position: relative;
   overflow: hidden;
   margin-top: 20px;
-  background: -webkit-linear-gradient(
-    right,
-    #a445b2,
-    #fa4299,
-    #a445b2,
-    #fa4299
-  );
+  background: -webkit-linear-gradient(right, #0300ab, #3827ff);
 `;
 
 // Apply the CSS styling to your form elements
@@ -122,7 +116,7 @@ const StyledInput = styled(Input)`
   font-size: 17px;
   transition: all 0.3s ease;
   &:focus {
-    border-color: #fc83bb;
+    border-color: #0300AB;
   }
 `;
 
@@ -159,7 +153,7 @@ const LoginForm = () => {
           <div className="form-inner">
             <FormRowVertical>
               <StyledInput
-                placeholder="Email Address" 
+                placeholder="Email Address"
                 id="email"
                 autoComplete="username"
                 value={inputs.email}
@@ -196,7 +190,7 @@ const LoginForm = () => {
               <p className="ml-3"> Not a member?</p>
               <p className="ml-4">
                 {" "}
-                <NavLink style={{ color: "#fa4299" }} to="/signup">
+                <NavLink style={{ color: "#000" ,fontWeight:'bold'}} to="/signup">
                   {" "}
                   Signup now
                 </NavLink>

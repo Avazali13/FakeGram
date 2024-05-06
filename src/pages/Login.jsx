@@ -6,7 +6,6 @@ import Logo from "../ui/Logo";
 import Heading from "../ui/Heading";
 import LoginForm from "../components/authentication/LoginForm";
 
-
 const LoginLayout = styled.main`
   min-height: 100vh;
   display: grid;
@@ -17,7 +16,7 @@ const LoginLayout = styled.main`
 
   padding-bottom: 3rem;
   /* background-color: var(--color-grey-50); */
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(right, #0300ab, #3827ff);
 `;
 
 function Login() {
