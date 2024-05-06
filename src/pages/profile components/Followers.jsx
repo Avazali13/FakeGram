@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import useGetFollowers from "../../hooks/useFollwers";
 import Heading from "../../ui/Heading";
@@ -6,16 +5,21 @@ import Spinner from "../../ui/Spinner";
 import SuggestedUser from "../SuggestedUsers/SuggestedUser";
 
 function Followers() {
-
-  const { isLoading, followerUsers }=useGetFollowers()
-  const {username}=useParams()
+  const { isLoading, followerUsers } = useGetFollowers();
+  const { username } = useParams();
 
   if (isLoading) return <Spinner />;
   if (!followerUsers.length)
     return (
       <div className="flex flex-col items-center justify-center py-8">
-        <Heading as="h3" className="text-red-800 mb-4">
-          Sorry ! ☹️ {username} don't have any followers
+        <Heading
+          className="text-center"
+          fontSize={{ base: "2rem", md: "2.5rem" }}
+          style={{ color: "#29ABE2" }}
+        >
+          <p className="text-[1rem] md:text-[3rem]">
+            Sorry ! ☹️ {username} don't have any followers
+          </p>
         </Heading>
       </div>
     );
@@ -32,4 +36,3 @@ function Followers() {
 }
 
 export default Followers;
-

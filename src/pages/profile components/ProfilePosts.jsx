@@ -7,7 +7,18 @@ import Heading from "../../ui/Heading";
 function ProfilePosts() {
   const { isLoading: isLoad, posts } = useGetUserPosts();
   const noPostsFound = !isLoad && posts.length === 0;
-  if (noPostsFound) return <Heading>There is no posts</Heading>;
+  if (noPostsFound)
+    return (
+      <Heading
+        className="text-center"
+        fontSize={{ base: "2rem", md: "2.5rem" }}
+        style={{ color: "#29ABE2" }}
+      >
+        <p className="text-[1rem] md:text-[3rem]">
+         There is no posts
+        </p>
+      </Heading>
+    );
 
   return (
     <Grid

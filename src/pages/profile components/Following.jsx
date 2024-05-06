@@ -14,9 +14,9 @@ function Following() {
   if (!followingUsers?.length)
     return (
       <div className="flex flex-col items-center justify-center py-8">
-        <Heading as="h3" className="text-red-800 mb-4">
-          `Sorry ! ☹️ {username} don't follow anyone`
-        </Heading>
+        <Heading className="text-center" fontSize={{base:'2rem',md:'2.5rem'}}  style={{color:'#29ABE2'}}><p className= "text-[1rem] md:text-[3rem]">Sorry ! ☹️ {username} don't follow anyone</p></Heading>
+
+      
       </div>
     );
 

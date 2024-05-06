@@ -26,8 +26,6 @@
 
 // export default SuggestedUsers;
 
-
-
 import useGetSuggestedUsers from "../../hooks/useGetSuggestedUsers";
 import Heading from "../../ui/Heading";
 import Spinner from "../../ui/Spinner";
@@ -39,9 +37,14 @@ function SuggestedUsers() {
   if (isLoading) return <Spinner />;
   if (!suggestedUsers.length)
     return (
-      <div className="flex flex-col  items-center justify-center py-8">
-        <Heading as="h3" className="text-green-600 mb-4">
-          There is no one to suggest for you because you follow all users.
+      <div className="flex flex-col  items-center justify-center py-16">
+        <Heading
+          className="text-center"
+          fontSize={{ base: "2rem", md: "4rem" }}
+          style={{ color: "#29ABE2" }}
+        >
+          {" "}
+          <p className="text-[3rem]">There is no one to suggest for you because you follow all users.</p>
         </Heading>
       </div>
     );
