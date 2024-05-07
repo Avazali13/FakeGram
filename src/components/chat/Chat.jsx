@@ -130,7 +130,7 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] sticky" >
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] sticky md:min-h-[60rem]" >
       <div className="flex items-center gap-6 justify-center border-b-1 py-5 " style={{backgroundColor: '#303030'}}>
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />

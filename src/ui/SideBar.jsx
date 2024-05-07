@@ -4,7 +4,12 @@ import MainNav from "./MainNav";
 
 const StyledSidebar = styled.aside`
   /* background-color: var(--color-grey-50);   */
-  height: calc(100vh - 8.5rem);
+  /* height: calc(100vh - 8.5rem); */
+  
+  @media only screen and (min-width: 768px) {
+    height: calc(100vh - 8.5rem);
+  }
+  
   /* padding: 3.2rem 2.4rem; */
   /* padding: 0rem 0rem; */
   /* border-right: 1px solid var(--color-grey-100); */

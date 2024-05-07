@@ -100,14 +100,19 @@ function ProfileLayout() {
                 <span>
                   {visitingOwnProfileAndAuth && (
                     <Button
+                    position={'relative'}
+                    bottom={0}
+                    left={{base:6,md:0}}
                       onClick={onOpen}
                       // colorScheme="blue"
                       color={'white'}
                       style={{ backgroundColor:"#3083ff" }}
                       size="lg"
+                      // size={{base:'sm',md:'lg'}}
                       variant="solid"
+                
                     >
-                      <p className="text-[1.8rem]"> Edit </p>
+                      <p className="md:text-[1.8rem] text-[1rem]"> Edit </p>
                     </Button>
                   )}
                   {visitingOwnProfileAndAuth || (

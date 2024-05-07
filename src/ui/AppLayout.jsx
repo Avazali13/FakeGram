@@ -34,7 +34,7 @@ const StyledAppLayout = styled.div`
   @media only screen and (min-width: 768px) {
     grid-template-columns: 26rem 1fr;
     grid-template-rows: auto 1fr;
-    height: calc(100vh - 8.5rem);
+  height: calc(100vh - 8.5rem);
   }
 `;
 

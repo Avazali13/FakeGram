@@ -107,7 +107,8 @@ const CreatePost = () => {
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
               minHeight={{ base: "70px", md: "130px" }}
-              width={{ base: "380px" }}
+              width={{ base: "210px", md:'380px' }}
+              // minH={{base:'12rem'}}
               _placeholder={{ color: "#a8a8a8" }}
        
               fontSize={14}
@@ -156,12 +157,12 @@ const CreatePost = () => {
             <Button
               onClick={handlePostCreation}
               isLoading={isLoading}
-              mr={6}
+              mr={{base:10,md:6}}
               mb={4}
               fontSize={14}
               colorScheme="blue"
             >
-              <p className="py-8 px-6 text-[1.4rem]">Post</p>
+              <p className="py-3 px-2 md:py-8 md:px-6 text-[1.4rem]">Post</p>
             </Button>
           </ModalFooter>
         </ModalContent>
