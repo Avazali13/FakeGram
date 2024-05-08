@@ -19,3 +19,8 @@ export const timeAgo = (timestamp) => {
   }
 };
 
+
+//* 1715075220883 gg
+//^ const currentDate = new Date(1715075220883);
+//! const timestamp = currentDate
+//& console.log(timestamp);

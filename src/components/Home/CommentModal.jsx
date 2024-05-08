@@ -60,13 +60,15 @@ const CommentModal = ({ isOpen, onClose, post }) => {
         bg={"#f9fafb"}
         position={{ base: "absolute", md: "relative" }}
         marginTop={"23rem"}
+        top={0}
         marginLeft={{ base: "0", md: "13rem" }}
-        bottom={0}
         border={"3px solid #c7d2fe"}
         // bg="BLACK"
 
         // maxW={"540px"}
         maxW={{ base: "300px", md: "520px" }}
+
+
         // maxH={{base:'230px',md:'210px'}}
         // maxH={"450px"}
         borderRadius={12}

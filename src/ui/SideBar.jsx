@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Logo from "./Logo";
+
 import MainNav from "./MainNav";
 
 const StyledSidebar = styled.aside`
@@ -7,7 +7,7 @@ const StyledSidebar = styled.aside`
   /* height: calc(100vh - 8.5rem); */
   
   @media only screen and (min-width: 768px) {
-    height: calc(100vh - 8.5rem);
+    height: calc(100vh -11.5rem);
   }
   
   /* padding: 3.2rem 2.4rem; */

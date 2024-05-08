@@ -30,6 +30,7 @@ const EditProfile = ({ isOpen, onClose }) => {
 
   const authUser = useAuthStore((state) => state.user);
 
+
   const fileRef = useRef(null);
   const fileRefs = useRef(null);
   const { selectedFile, handleImageChange, setSelectedFile } = usePreviewImg();
@@ -37,8 +38,7 @@ const EditProfile = ({ isOpen, onClose }) => {
     usePreviewImgBg();
   const { isUpdating, editProfile } = useEditProfile();
   const handleEditProfile = async () => {
-    console.log(selectedFile);
-    console.log(selectedFiles);
+
     try {
       await editProfile(inputs, selectedFile, selectedFiles);
       setSelectedFile(null);
@@ -49,6 +49,8 @@ const EditProfile = ({ isOpen, onClose }) => {
     }
   };
 
+  const defaultİmg =
+  "https://images.unsplash.com/photo-1617395440873-63f6e7f25139?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
   return (
     <Modal isOpen={isOpen} onClose={onClose} colorScheme="blue">
       <ModalOverlay />
@@ -63,7 +65,7 @@ const EditProfile = ({ isOpen, onClose }) => {
               mb={3}
             />
 
-            <img src={selectedFiles || authUser.backgrondPicURL} alt="bg" className="max-w-[29rem]" />
+            <img src={selectedFiles || authUser.backgrondPicURL || defaultİmg} alt="bg" className="max-w-[15rem] max-h-[10rem] md:max-h-[18rem] md:max-w-[31rem]" />
 
             <Button onClick={() => fileRefs.current.click()} mt={3} mb={4} size={'lg'} paddingX={4} paddingY={5} >
               Edit bg
@@ -115,6 +117,8 @@ const EditProfile = ({ isOpen, onClose }) => {
                 defaultValue={authUser.bio}
                 height={{base:'3rem',md:'4rem'}}
                 onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
+    
+           
               />
             </FormControl>
             <Stack direction="row" mt={6} spacing={4}>

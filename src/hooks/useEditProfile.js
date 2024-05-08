@@ -41,6 +41,7 @@ const useEditProfile = () => {
         // username: inputs.username ? inputs.username.toLowerCase() : null,
         // bio: inputs.bio || authUser.bio,
         bio: inputs.bio ? inputs.bio || authUser.bio : "",
+
         profilePicURL: URL || authUser.profilePicURL,
         backgrondPicURL: URLS || authUser.backgrondPicURL,
       };

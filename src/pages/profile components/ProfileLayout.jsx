@@ -94,7 +94,7 @@ function ProfileLayout() {
 
             <div className="p-4 pt-1 md:pt-4 pb-0 ">
               <div className="ml-48 md:ml-60 flex flex-col gap-5">
-                <h1 className=" text-2xl md:text-4xl font-semibold pt-4">
+                <h1 className=" text-2xl md:text-4xl font-semibold pt-4 pl-3 md:pl-0">
                   {userProfile?.username}
                 </h1>
                 <span>

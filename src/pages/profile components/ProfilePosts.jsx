@@ -14,7 +14,7 @@ function ProfilePosts() {
         fontSize={{ base: "2rem", md: "2.5rem" }}
         style={{ color: "#29ABE2" }}
       >
-        <p className="text-[1rem] md:text-[3rem]">
+        <p className="text-[2rem] md:text-[3rem]">
          There is no posts
         </p>
       </Heading>

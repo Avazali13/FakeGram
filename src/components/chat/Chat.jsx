@@ -130,7 +130,7 @@ const Chat = () => {
   console.log(chat);
 
   return (
-    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] sticky md:min-h-[60rem]" >
+    <div className="chat-container flex flex-col basis-2/3 border-x-2 text-white md:max-h-[68rem] max-h-[56rem] sticky min-h-[45rem] md:min-h-[60rem]" >
       <div className="flex items-center gap-6 justify-center border-b-1 py-5 " style={{backgroundColor: '#303030'}}>
        <NavLink to={`/${user?.username}`}>
        <Avatar size={"xl"} src={user?.profilePicURL}  />
@@ -186,7 +186,7 @@ const Chat = () => {
               <path d="M7.105 9.553a1 1 0 0 1 1.342-.448l2 1a1 1 0 0 1-.894 1.79l-2-1a1 1 0 0 1-.448-1.342zm8.448-.448-2 1a1 1 0 0 0 .894 1.79l2-1a1 1 0 1 0-.894-1.79zm-.328 5.263a4 4 0 0 1-6.45 0 1 1 0 0 0-1.55 1.264 6 6 0 0 0 9.55 0 1 1 0 1 0-1.55-1.264zM23 2v10a11 11 0 0 1-22 0V2a1 1 0 0 1 1.316-.949l4.229 1.41a10.914 10.914 0 0 1 10.91 0l4.229-1.41A1 1 0 0 1 23 2zm-2 10a9 9 0 1 0-9 9 9.029 9.029 0 0 0 9-9z" />
             </svg>
           </div>
-          <div className="absolute bottom-12 right-0">
+          <div className="absolute , bottom-12 right-[-8rem] md:bottom-12 md:right-0 ">
             <EmojiPicker open={open} onEmojiClick={handleEmoji} />
           </div>
         </div>
