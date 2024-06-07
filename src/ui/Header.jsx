@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
-import Logo from "./Logo";
+// import Logo from "./Logo";
 
 
 
@@ -25,7 +25,7 @@ border-bottom: 1px solid #c7d2fe;
 function Header() {
   return (
     <StyledHeader>
-    <Logo/>
+    {/* <Logo/> */}
     <HeaderMenu/>
     </StyledHeader>
   );
