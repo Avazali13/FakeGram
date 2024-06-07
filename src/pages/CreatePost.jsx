@@ -214,7 +214,7 @@ function useCreatePost() {
 
       toast.success("Post Created Successfully");
     } catch (error) {
-      toast.error("gs");
+      toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
